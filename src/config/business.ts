@@ -41,4 +41,9 @@ export const business = {
     "No waiting around",
     "OEM quality parts used",
   ],
+  offer: {
+    fullServiceFrom: "£140",
+    firstFullServiceDiscount: "£15 off",
+    note: "For new customers booking a first full service.",
+  },
 } as const;

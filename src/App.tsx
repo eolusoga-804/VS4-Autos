@@ -37,6 +37,20 @@ function App() {
           </p>
         ))}
       </section>
+
+      <section className="page__offer" aria-labelledby="offer-heading">
+        <div>
+          <p className="page__offer-label">New customer offer</p>
+          <h2 className="page__offer-heading" id="offer-heading">
+            {business.offer.firstFullServiceDiscount} your first full service
+          </h2>
+          <p className="page__offer-note">{business.offer.note}</p>
+        </div>
+
+        <p className="page__offer-price">
+          Full service from <strong>{business.offer.fullServiceFrom}</strong>
+        </p>
+      </section>
     </main>
   );
 }
