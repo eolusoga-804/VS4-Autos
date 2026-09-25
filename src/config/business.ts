@@ -30,4 +30,9 @@ export const business = {
     fullServiceStartingPrice: "£140",
   },
   reviewNote: "Customers mention honest, reliable service.",
+  navigation: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ],
 } as const;

@@ -49,3 +49,42 @@
     font-size: 0.65rem;
   }
 }
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.site-header__link {
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.site-header__link:hover,
+.site-header__link:focus-visible {
+  color: var(--color-sky);
+}
+
+.site-header__link:focus-visible {
+  outline: 2px solid var(--color-sky);
+  outline-offset: 4px;
+}
+
+@media (max-width: 540px) {
+  .site-header {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+
+  .site-header__nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid rgb(248 250 252 / 10%);
+    padding-top: 0.35rem;
+  }
+}
