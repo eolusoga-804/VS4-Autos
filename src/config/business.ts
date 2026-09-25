@@ -51,4 +51,15 @@ export const business = {
     message: "Get in touch to discuss your vehicle and request a quote.",
     buttonLabel: "Contact VS4 Autos",
   },
+  approach: {
+    heading: "A more convenient way to care for your car",
+    intro:
+      "We bring mobile mechanic support to your home or workplace across High Peak and Greater Manchester.",
+    points: [
+      "We come to your home or workplace",
+      "No garage drop-off",
+      "No waiting around",
+      "OEM quality parts used",
+    ],
+  },
 } as const;

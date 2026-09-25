@@ -47,14 +47,16 @@ function AboutPage() {
         aria-labelledby="about-approach-title"
       >
         <div>
-          <p className="about-page__eyebrow">Mobile by design</p>
+          <p className="about-page__eyebrow">The VS4 Autos approach</p>
           <h2 className="about-page__title" id="about-approach-title">
-            Service at your home or workplace
+            {business.approach.heading}
           </h2>
+          <p className="about-page__copy">{business.approach.intro}</p>
         </div>
+
         <ul className="about-page__benefits">
-          {business.benefits.map((benefit) => (
-            <li key={benefit}>{benefit}</li>
+          {business.approach.points.map((point) => (
+            <li key={point}>{point}</li>
           ))}
         </ul>
       </section>
