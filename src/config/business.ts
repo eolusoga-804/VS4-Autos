@@ -62,4 +62,31 @@ export const business = {
       "OEM quality parts used",
     ],
   },
+  faqs: [
+    {
+      question: "Where does VS4 Autos provide mobile mechanic services?",
+      answer:
+        "We cover High Peak and Greater Manchester. Send your postcode when you enquire so we can confirm availability for your area.",
+    },
+    {
+      question: "Do I need to take my vehicle to a garage?",
+      answer:
+        "The service is mobile. We come to your home or workplace, so there is no garage drop-off.",
+    },
+    {
+      question: "What services can I ask about?",
+      answer:
+        "You can enquire about servicing, brakes, diagnostics, repairs and maintenance, batteries, pre-purchase inspections, and car flipping.",
+    },
+    {
+      question: "How much does a full service cost?",
+      answer:
+        "A full service is listed from £140, with £15 off for new customers. Share your vehicle details when you enquire so VS4 Autos can confirm the right service and price.",
+    },
+    {
+      question: "What should I include when requesting a quote?",
+      answer:
+        "Send your vehicle registration and postcode, describe the service or issue you need help with, and include any useful timing details. This helps VS4 Autos respond with a relevant quote.",
+    },
+  ],
 } as const;

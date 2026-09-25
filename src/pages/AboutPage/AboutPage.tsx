@@ -1,4 +1,6 @@
 import { business } from "../../config/business";
+
+import FaqAccordion from "./FaqAccordion";
 import "./AboutPage.css";
 
 function AboutPage() {
@@ -59,6 +61,16 @@ function AboutPage() {
             <li key={point}>{point}</li>
           ))}
         </ul>
+      </section>
+
+      <section className="about-page__faqs" aria-labelledby="about-faq-title">
+        <div className="about-page__section-heading">
+          <p className="about-page__eyebrow">Common questions</p>
+          <h2 className="about-page__title" id="about-faq-title">
+            Before you book
+          </h2>
+        </div>
+        <FaqAccordion />
       </section>
     </main>
   );
