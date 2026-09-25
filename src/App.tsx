@@ -1,13 +1,11 @@
-import { business } from "./config/business";
-
+import { Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
-
+import { business } from "./config/business";
 import "./App.css";
 
-function App() {
+function HomePage() {
   return (
     <main className="page">
-      <SiteHeader />
       <p className="page__eyebrow">MOBILE MECHANIC · {business.coverage}</p>
       <h1 className="page__title">{business.name}</h1>
       <p className="page__intro">{business.tagline}</p>
@@ -19,7 +17,6 @@ function App() {
         <h2 className="page__services-heading" id="services-heading">
           Mobile mechanic services
         </h2>
-
         <ul className="page__services">
           {business.services.map((service) => (
             <li key={service}>{service}</li>
@@ -46,7 +43,6 @@ function App() {
           </h2>
           <p className="page__offer-note">{business.offer.note}</p>
         </div>
-
         <p className="page__offer-price">
           Full service from <strong>{business.offer.fullServiceFrom}</strong>
         </p>
@@ -61,12 +57,58 @@ function App() {
             {business.homeContact.message}
           </p>
         </div>
-
         <a className="page__contact-link" href="/contact">
           {business.homeContact.buttonLabel}
         </a>
       </section>
     </main>
+  );
+}
+
+function AboutPlaceholder() {
+  return (
+    <main className="page">
+      <p className="page__eyebrow">{business.coverage}</p>
+      <h1 className="page__title">About {business.name}</h1>
+    </main>
+  );
+}
+
+function ContactPlaceholder() {
+  return (
+    <main className="page">
+      <p className="page__eyebrow">{business.coverage}</p>
+      <h1 className="page__title">Contact {business.name}</h1>
+    </main>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <main className="page">
+      <p className="page__eyebrow">404 · PAGE NOT FOUND</p>
+      <h1 className="page__title">We couldn’t find that page</h1>
+      <p className="page__intro">
+        The address may be incorrect or the page may have moved.
+      </p>
+      <a className="page__contact-link" href="/">
+        Return home
+      </a>
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <SiteHeader />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPlaceholder />} />
+        <Route path="/contact" element={<ContactPlaceholder />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
