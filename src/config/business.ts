@@ -95,4 +95,12 @@ export const business = {
       "VS4 Autos serves drivers across High Peak and Greater Manchester. Share your postcode when you enquire so we can confirm availability.",
     areas: ["High Peak", "Greater Manchester"],
   },
+  serviceDescriptions: {
+    servicing:
+      "Interim, full, and major servicing to help maintain your vehicle. A full service is listed from £140, with £15 off for new customers.",
+    brakes:
+      "Brake pad and disc replacement to help keep your vehicle stopping safely. Contact VS4 Autos to discuss your vehicle and request a quote.",
+    diagnostics:
+      "Engine diagnostics using an ODB scanner to help identify warning lights and vehicle faults.",
+  },
 } as const;
