@@ -12,11 +12,20 @@ function App() {
       <h1 className="page__title">{business.name}</h1>
       <p className="page__intro">{business.tagline}</p>
 
-      <ul className="page__services" aria-label="Services">
-        {business.services.map((service) => (
-          <li key={service}>{service}</li>
-        ))}
-      </ul>
+      <section
+        className="page__services-section"
+        aria-labelledby="services-heading"
+      >
+        <h2 className="page__services-heading" id="services-heading">
+          Mobile mechanic services
+        </h2>
+
+        <ul className="page__services">
+          {business.services.map((service) => (
+            <li key={service}>{service}</li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
