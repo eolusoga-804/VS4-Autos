@@ -1,23 +1,42 @@
 .page {
-  max-width: 1140px;
+  width: min(100% - 2rem, var(--content-width));
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
 
 .page__eyebrow {
-  color: #6b7280;
-  font-size: 0.75rem;
+  margin: 0;
+  color: var(--color-sky);
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
 .page__title {
-  margin: 0.5rem 0;
-  font-family: Georgia, serif;
+  margin: 0.35rem 0 0;
+  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 0.95;
 }
 
 .page__intro {
+  margin: 0.5rem 0 1rem;
+  color: var(--color-muted);
+}
+
+.page__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
   margin: 0;
-  color: #6b7280;
+  padding: 0;
+  list-style: none;
+}
+
+.page__services li {
+  border: 1px solid rgb(125 211 252 / 28%);
+  border-radius: 0.35rem;
+  padding: 0.3rem 0.5rem;
+  color: var(--color-white);
+  font-size: 0.78rem;
 }
