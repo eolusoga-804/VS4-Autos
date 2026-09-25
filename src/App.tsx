@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+
 import { business } from "./config/business";
 import "./App.css";
 
@@ -101,6 +103,7 @@ function NotFoundPage() {
 function App() {
   return (
     <>
+      <ScrollToTop />
       <SiteHeader />
       <Routes>
         <Route path="/" element={<HomePage />} />
