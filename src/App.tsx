@@ -26,6 +26,17 @@ function App() {
           ))}
         </ul>
       </section>
+
+      <section className="page__benefits" aria-label="Mobile service benefits">
+        {business.benefits.map((benefit) => (
+          <p className="page__benefit" key={benefit}>
+            <span className="page__benefit-mark" aria-hidden="true">
+              ✓
+            </span>
+            {benefit}
+          </p>
+        ))}
+      </section>
     </main>
   );
 }

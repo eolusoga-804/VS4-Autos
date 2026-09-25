@@ -35,4 +35,10 @@ export const business = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
+  benefits: [
+    "We come to your home or workplace",
+    "No garage drop-off",
+    "No waiting around",
+    "OEM quality parts used",
+  ],
 } as const;

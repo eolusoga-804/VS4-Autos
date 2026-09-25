@@ -57,3 +57,26 @@
   font-size: 1.5rem;
   line-height: 1;
 }
+
+.page__benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+}
+
+.page__benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  border: 1px solid rgb(248 250 252 / 10%);
+  padding: 0.45rem 0.55rem;
+  color: var(--color-white);
+  font-size: 0.78rem;
+}
+
+.page__benefit-mark {
+  color: var(--color-sky);
+  font-weight: 800;
+}
