@@ -89,4 +89,10 @@ export const business = {
         "Send your vehicle registration and postcode, describe the service or issue you need help with, and include any useful timing details. This helps VS4 Autos respond with a relevant quote.",
     },
   ],
+  serviceArea: {
+    heading: "Mobile mechanic coverage",
+    intro:
+      "VS4 Autos serves drivers across High Peak and Greater Manchester. Share your postcode when you enquire so we can confirm availability.",
+    areas: ["High Peak", "Greater Manchester"],
+  },
 } as const;

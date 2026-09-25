@@ -72,6 +72,22 @@ function AboutPage() {
         </div>
         <FaqAccordion />
       </section>
+
+      <section className="about-page__area" aria-labelledby="about-area-title">
+        <div>
+          <p className="about-page__eyebrow">Local mobile support</p>
+          <h2 className="about-page__title" id="about-area-title">
+            {business.serviceArea.heading}
+          </h2>
+          <p className="about-page__copy">{business.serviceArea.intro}</p>
+        </div>
+
+        <ul className="about-page__area-list">
+          {business.serviceArea.areas.map((area) => (
+            <li key={area}>{area}</li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
