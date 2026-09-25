@@ -46,4 +46,9 @@ export const business = {
     firstFullServiceDiscount: "£15 off",
     note: "For new customers booking a first full service.",
   },
+  homeContact: {
+    heading: "Need a mechanic at your home or workplace?",
+    message: "Get in touch to discuss your vehicle and request a quote.",
+    buttonLabel: "Contact VS4 Autos",
+  },
 } as const;

@@ -131,3 +131,70 @@
     flex-direction: column;
   }
 }
+
+.page__contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.55rem;
+  border: 1px solid rgb(125 211 252 / 30%);
+  padding: 0.75rem;
+  background: linear-gradient(
+    110deg,
+    rgb(125 211 252 / 12%),
+    rgb(255 255 255 / 3%)
+  );
+}
+
+.page__contact-heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  line-height: 1.05;
+}
+
+.page__contact-message {
+  margin: 0.3rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.page__contact-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  border: 1px solid var(--color-sky);
+  padding: 0.55rem 0.7rem;
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.page__contact-link:hover,
+.page__contact-link:focus-visible {
+  background: var(--color-sky);
+  color: var(--color-black);
+}
+
+.page__contact-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .page__contact {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .page__contact-link {
+    align-self: flex-start;
+  }
+}

@@ -51,6 +51,21 @@ function App() {
           Full service from <strong>{business.offer.fullServiceFrom}</strong>
         </p>
       </section>
+
+      <section className="page__contact" aria-labelledby="home-contact-heading">
+        <div>
+          <h2 className="page__contact-heading" id="home-contact-heading">
+            {business.homeContact.heading}
+          </h2>
+          <p className="page__contact-message">
+            {business.homeContact.message}
+          </p>
+        </div>
+
+        <a className="page__contact-link" href="/contact">
+          {business.homeContact.buttonLabel}
+        </a>
+      </section>
     </main>
   );
 }
