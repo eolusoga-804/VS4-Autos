@@ -1,0 +1,13 @@
+:root {
+  font-family: Manrope, Arial, sans-serif;
+  color: #f8fafc;
+  background: #111315;
+
+  --color-black: #111315;
+  --color-white: #f8fafc;
+  --color-sky: #7dd3fc;
+  --color-muted: #6b7280;
+  --font-body: Manrope, Arial, sans-serif;
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --content-width: 1140px;
+}
