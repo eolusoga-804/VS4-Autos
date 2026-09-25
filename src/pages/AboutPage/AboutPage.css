@@ -1,0 +1,138 @@
+.about-page {
+  width: min(100% - 2rem, var(--content-width));
+  margin: 0 auto;
+  padding: 1.1rem 0 1.5rem;
+}
+
+.about-page__intro,
+.about-page__services,
+.about-page__approach {
+  border: 1px solid rgb(248 250 252 / 12%);
+  padding: 0.85rem;
+}
+
+.about-page__intro {
+  background: #f8fafc;
+  color: var(--color-black);
+}
+
+.about-page__eyebrow {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-page__title {
+  margin: 0.25rem 0 0.4rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 3.1rem);
+  line-height: 0.98;
+}
+
+.about-page__copy {
+  max-width: 65ch;
+  margin: 0;
+  color: #41464d;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.about-page__services {
+  margin-top: 0.6rem;
+  background-color: #111315;
+  background-image:
+    linear-gradient(rgb(125 211 252 / 12%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(125 211 252 / 12%) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.about-page__section-heading {
+  margin-bottom: 0.65rem;
+  text-align: center;
+}
+
+.about-page__service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 0.5rem;
+}
+
+.about-page__service-card {
+  min-height: 7.3rem;
+  border: 1px solid rgb(248 250 252 / 16%);
+  padding: 0.65rem;
+  background: rgb(17 19 21 / 88%);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.about-page__service-card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(125 211 252 / 65%);
+}
+
+.about-page__service-number {
+  color: var(--color-sky);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.about-page__service-title {
+  margin: 0.3rem 0;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.about-page__service-copy {
+  margin: 0;
+  color: #c0c5cc;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.about-page__approach {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 0.6rem;
+  background: #f8fafc;
+  color: var(--color-black);
+}
+
+.about-page__benefits {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-page__benefits li {
+  border-left: 2px solid #38bdf8;
+  padding: 0.35rem 0.5rem;
+  background: #eef2f6;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 600px) {
+  .about-page__section-heading,
+  .about-page__approach > div {
+    text-align: center;
+  }
+
+  .about-page__approach {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__service-card {
+    transition: none;
+  }
+}

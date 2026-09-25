@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import AboutPage from "./pages/AboutPage/AboutPage";
 
 import { business } from "./config/business";
 import "./App.css";
@@ -67,15 +68,6 @@ function HomePage() {
   );
 }
 
-function AboutPlaceholder() {
-  return (
-    <main className="page">
-      <p className="page__eyebrow">{business.coverage}</p>
-      <h1 className="page__title">About {business.name}</h1>
-    </main>
-  );
-}
-
 function ContactPlaceholder() {
   return (
     <main className="page">
@@ -107,7 +99,7 @@ function App() {
       <SiteHeader />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPlaceholder />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPlaceholder />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

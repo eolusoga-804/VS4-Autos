@@ -1,0 +1,65 @@
+import { business } from "../../config/business";
+import "./AboutPage.css";
+
+function AboutPage() {
+  return (
+    <main className="about-page">
+      <section className="about-page__intro">
+        <p className="about-page__eyebrow">{business.coverage}</p>
+        <h1 className="about-page__title">
+          Practical vehicle care, brought to you
+        </h1>
+        <p className="about-page__copy">
+          {business.name} provides mobile mechanic support at your home or
+          workplace, helping you care for your vehicle without arranging a
+          garage drop-off.
+        </p>
+      </section>
+
+      <section
+        className="about-page__services"
+        aria-labelledby="about-services-title"
+      >
+        <div className="about-page__section-heading">
+          <p className="about-page__eyebrow">What we do</p>
+          <h2 className="about-page__title" id="about-services-title">
+            Services for everyday motoring
+          </h2>
+        </div>
+
+        <div className="about-page__service-grid">
+          {business.services.map((service, index) => (
+            <article className="about-page__service-card" key={service}>
+              <span className="about-page__service-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="about-page__service-title">{service}</h3>
+              <p className="about-page__service-copy">
+                Ask us about availability and a quote for your vehicle.
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="about-page__approach"
+        aria-labelledby="about-approach-title"
+      >
+        <div>
+          <p className="about-page__eyebrow">Mobile by design</p>
+          <h2 className="about-page__title" id="about-approach-title">
+            Service at your home or workplace
+          </h2>
+        </div>
+        <ul className="about-page__benefits">
+          {business.benefits.map((benefit) => (
+            <li key={benefit}>{benefit}</li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  );
+}
+
+export default AboutPage;
