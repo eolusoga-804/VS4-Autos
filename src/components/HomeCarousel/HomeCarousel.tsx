@@ -14,6 +14,18 @@ const slides = [
     src: "/images/engine-detail.jpg",
     alt: "Close-up view of a vehicle engine",
   },
+  {
+    src: "/images/automotive-workshop-car.jpg",
+    alt: "Car and tools inside an automotive workshop",
+  },
+  {
+    src: "/images/mechanic-engine-repair.jpg",
+    alt: "Mechanic working closely on a vehicle engine",
+  },
+  {
+    src: "/images/vehicle-inspection-workshop.jpg",
+    alt: "Mechanic inspecting a car in a bright workshop",
+  },
 ];
 
 function HomeCarousel() {
