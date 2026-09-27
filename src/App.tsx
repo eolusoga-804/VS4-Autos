@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import SiteFooter from "./components/SiteFooter/SiteFooter";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
-import SiteFooter from "./components/SiteFooter/SiteFooter";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 import { business } from "./config/business";
 import "./App.css";
@@ -70,34 +71,28 @@ function HomePage() {
   );
 }
 
-function NotFoundPage() {
+function SiteLayout() {
   return (
-    <main className="page">
-      <p className="page__eyebrow">404 · PAGE NOT FOUND</p>
-      <h1 className="page__title">We couldn’t find that page</h1>
-      <p className="page__intro">
-        The address may be incorrect or the page may have moved.
-      </p>
-      <a className="page__contact-link" href="/">
-        Return home
-      </a>
-    </main>
+    <>
+      <ScrollToTop />
+      <SiteHeader />
+      <Outlet />
+      <SiteFooter />
+    </>
   );
 }
 
 function App() {
   return (
-    <>
-      <ScrollToTop />
-      <SiteHeader />
-      <Routes>
+    <Routes>
+      <Route element={<SiteLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <SiteFooter />
-    </>
+      </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
