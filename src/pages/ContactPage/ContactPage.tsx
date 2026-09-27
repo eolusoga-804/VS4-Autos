@@ -43,15 +43,29 @@ function ContactPage() {
 
     const nextErrors: FormErrors = {};
     if (!values.name.trim()) nextErrors.name = "Enter your name.";
-    if (!values.phone.trim()) nextErrors.phone = "Enter a phone number.";
+    if (!values.phone.trim()) {
+      nextErrors.phone = "Enter a phone number.";
+    } else {
+      const phoneDigits = values.phone.replace(/\D/g, "");
+      if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+        nextErrors.phone = "Enter a phone number with 10 to 15 digits.";
+      }
+    }
     if (!values.email.trim()) nextErrors.email = "Enter your email address.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
       nextErrors.email = "Enter a valid email address.";
     }
     if (!values.vehicle.trim())
       nextErrors.vehicle = "Enter your vehicle make and model.";
-    if (!values.postcode.trim())
+    if (!values.postcode.trim()) {
       nextErrors.postcode = "Enter your UK postcode.";
+    } else if (
+      !/^(GIR 0AA|[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2})$/i.test(
+        values.postcode.trim(),
+      )
+    ) {
+      nextErrors.postcode = "Enter a valid UK postcode.";
+    }
     if (!values.service) nextErrors.service = "Choose a service.";
     if (!values.message.trim())
       nextErrors.message = "Describe how we can help.";
