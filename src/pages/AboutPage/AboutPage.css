@@ -246,3 +246,10 @@
     justify-content: center;
   }
 }
+
+.about-page__faq-mark--open {
+  background: rgb(125 211 252 / 14%);
+  color: var(--color-white);
+  transform: rotate(50deg);
+  transition: all 1s;
+}

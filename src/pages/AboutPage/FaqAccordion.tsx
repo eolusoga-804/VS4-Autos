@@ -21,8 +21,11 @@ function FaqAccordion() {
                 onClick={() => setActiveIndex(isOpen ? null : index)}
               >
                 <span>{faq.question}</span>
-                <span className="about-page__faq-mark" aria-hidden="true">
-                  {isOpen ? "−" : "?"}
+                <span
+                  className={`about-page__faq-mark${isOpen ? " about-page__faq-mark--open" : ""}`}
+                  aria-hidden="true"
+                >
+                  ?
                 </span>
               </button>
             </h3>
