@@ -3,16 +3,16 @@ import "./HomeCarousel.css";
 
 const slides = [
   {
-    src: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1500&q=85",
-    alt: "Mechanic inspecting a vehicle in a workshop",
+    src: "/images/mechanic-engine.jpg",
+    alt: "Mechanic working on a car engine in a workshop",
   },
   {
-    src: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1500&q=85",
-    alt: "Technician working on a car engine",
+    src: "/images/mechanic-wheel.jpg",
+    alt: "Mechanic changing a car wheel",
   },
   {
-    src: "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1500&q=85",
-    alt: "Detailed view of a vehicle during maintenance",
+    src: "/images/engine-detail.jpg",
+    alt: "Close-up view of a vehicle engine",
   },
 ];
 
