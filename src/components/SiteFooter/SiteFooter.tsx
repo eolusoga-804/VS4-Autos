@@ -60,6 +60,14 @@ function SiteFooter() {
           {business.footer.groups.map((group, index) => {
             const isOpen = activeGroup === index;
 
+            const links =
+              group.title === "Services"
+                ? business.services.map((service) => ({
+                    label: service,
+                    href: "/about",
+                  }))
+                : group.links;
+
             return (
               <section className="site-footer__group" key={group.title}>
                 <h2 className="site-footer__heading">
@@ -77,7 +85,7 @@ function SiteFooter() {
                 <ul
                   className={`site-footer__links${isOpen ? " site-footer__links--open" : ""}`}
                 >
-                  {group.links
+                  {links
                     .filter((link) => link.href)
                     .map((link) => (
                       <li key={link.label}>
