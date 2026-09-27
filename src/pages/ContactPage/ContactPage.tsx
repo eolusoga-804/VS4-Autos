@@ -31,18 +31,25 @@ function ContactPage() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [formError, setFormError] = useState("");
+  const [fallbackMailto, setFallbackMailto] = useState("");
 
   function updateField(field: keyof FormValues, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setFormError("");
+    setFallbackMailto("");
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setFallbackMailto("");
 
     const nextErrors: FormErrors = {};
-    if (!values.name.trim()) nextErrors.name = "Enter your name.";
+
+    if (!values.name.trim()) {
+      nextErrors.name = "Enter your name.";
+    }
+
     if (!values.phone.trim()) {
       nextErrors.phone = "Enter a phone number.";
     } else {
@@ -51,12 +58,17 @@ function ContactPage() {
         nextErrors.phone = "Enter a phone number with 10 to 15 digits.";
       }
     }
-    if (!values.email.trim()) nextErrors.email = "Enter your email address.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+
+    if (!values.email.trim()) {
+      nextErrors.email = "Enter your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
       nextErrors.email = "Enter a valid email address.";
     }
-    if (!values.vehicle.trim())
+
+    if (!values.vehicle.trim()) {
       nextErrors.vehicle = "Enter your vehicle make and model.";
+    }
+
     if (!values.postcode.trim()) {
       nextErrors.postcode = "Enter your UK postcode.";
     } else if (
@@ -66,21 +78,19 @@ function ContactPage() {
     ) {
       nextErrors.postcode = "Enter a valid UK postcode.";
     }
-    if (!values.service) nextErrors.service = "Choose a service.";
-    if (!values.message.trim())
-      nextErrors.message = "Describe how we can help.";
 
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      setFormError("Please correct the highlighted fields and try again.");
-      return;
+    if (!values.service) {
+      nextErrors.service = "Choose a service.";
     }
 
-    const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
-    if (!whatsappNumber) {
-      setFormError(
-        "Your details are ready, but WhatsApp contact has not been configured yet. Please use the business email instead.",
-      );
+    if (!values.message.trim()) {
+      nextErrors.message = "Describe how we can help.";
+    }
+
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFormError("Please correct the highlighted fields and try again.");
       return;
     }
 
@@ -96,11 +106,22 @@ function ContactPage() {
       `Details: ${values.message.trim()}`,
     ].join("\n");
 
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
+
+    if (!whatsappNumber) {
+      const subject = encodeURIComponent(`New enquiry for ${business.name}`);
+      const body = encodeURIComponent(whatsappMessage);
+
+      setFormError(business.contact.whatsappFallbackMessage);
+      setFallbackMailto(
+        `mailto:${business.contact.email}?subject=${subject}&body=${body}`,
+      );
+      return;
+    }
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -124,7 +145,9 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>Name *</span>
             <input
+              name="name"
               autoComplete="name"
+              maxLength={80}
               value={values.name}
               onChange={(event) => updateField("name", event.target.value)}
               aria-invalid={Boolean(errors.name)}
@@ -138,8 +161,10 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>Phone *</span>
             <input
+              name="phone"
               type="tel"
               autoComplete="tel"
+              maxLength={24}
               value={values.phone}
               onChange={(event) => updateField("phone", event.target.value)}
               aria-invalid={Boolean(errors.phone)}
@@ -155,8 +180,10 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>Email *</span>
             <input
+              name="email"
               type="email"
               autoComplete="email"
+              maxLength={254}
               value={values.email}
               onChange={(event) => updateField("email", event.target.value)}
               aria-invalid={Boolean(errors.email)}
@@ -172,6 +199,8 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>Vehicle make and model *</span>
             <input
+              name="vehicle"
+              maxLength={100}
               placeholder="e.g. Ford Fiesta"
               value={values.vehicle}
               onChange={(event) => updateField("vehicle", event.target.value)}
@@ -188,6 +217,8 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>Registration</span>
             <input
+              name="registration"
+              maxLength={10}
               value={values.registration}
               onChange={(event) =>
                 updateField("registration", event.target.value)
@@ -198,7 +229,9 @@ function ContactPage() {
           <label className="contact-page__field">
             <span>UK postcode *</span>
             <input
+              name="postcode"
               autoComplete="postal-code"
+              maxLength={8}
               value={values.postcode}
               onChange={(event) => updateField("postcode", event.target.value)}
               aria-invalid={Boolean(errors.postcode)}
@@ -214,6 +247,7 @@ function ContactPage() {
           <label className="contact-page__field contact-page__field--wide">
             <span>Service required *</span>
             <select
+              name="service"
               value={values.service}
               onChange={(event) => updateField("service", event.target.value)}
               aria-invalid={Boolean(errors.service)}
@@ -236,7 +270,9 @@ function ContactPage() {
           <label className="contact-page__field contact-page__field--wide">
             <span>How can we help? *</span>
             <textarea
+              name="message"
               rows={5}
+              maxLength={1500}
               value={values.message}
               onChange={(event) => updateField("message", event.target.value)}
               aria-invalid={Boolean(errors.message)}
@@ -254,6 +290,12 @@ function ContactPage() {
           <p className="contact-page__error" role="alert">
             {formError}
           </p>
+        )}
+
+        {fallbackMailto && (
+          <a className="contact-page__email-fallback" href={fallbackMailto}>
+            Open prefilled email
+          </a>
         )}
 
         <button className="contact-page__submit" type="submit">

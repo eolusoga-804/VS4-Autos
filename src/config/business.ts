@@ -8,6 +8,8 @@ export const business = {
     email: "info@vs4autos.com",
     website: "https://vs4autos.com",
     whatsappNumber: "",
+    whatsappFallbackMessage:
+      "WhatsApp is not configured yet. You can open this enquiry in your email app instead.",
   },
   services: [
     "Interim servicing",
