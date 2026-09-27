@@ -96,13 +96,23 @@ export const business = {
     areas: ["High Peak", "Greater Manchester"],
   },
   serviceDescriptions: {
-    servicing:
-      "Interim, full, and major servicing to help maintain your vehicle. A full service is listed from £140, with £15 off for new customers.",
-    brakes:
-      "Brake pad and disc replacement to help keep your vehicle stopping safely. Contact VS4 Autos to discuss your vehicle and request a quote.",
-    diagnostics:
-      "Engine diagnostics using an ODB scanner to help identify warning lights and vehicle faults.",
-  },
+    "Interim servicing":
+      "Routine interim servicing for drivers who want regular maintenance between major services. Share your vehicle details so VS4 Autos can confirm the appropriate work and quote.",
+    "Full and major servicing":
+      "Full and major servicing for a more thorough maintenance visit. The supplied offer lists full services from £140, with £15 off for new customers. Confirm the price and work for your vehicle when enquiring.",
+    "Brake pad and disc replacement":
+      "Brake pad and disc replacement for worn braking components. Describe any noises, vibration, or changes in braking and provide your vehicle details so the required work can be discussed.",
+    "Engine diagnostics with ODB scanner":
+      "Engine diagnostics using an ODB scanner to help identify fault codes and warning lights. A diagnostic reading can guide further checks; it does not by itself confirm every underlying fault.",
+    "Repairs and maintenance":
+      "Mobile repairs and maintenance for a range of vehicle needs. Explain the issue, share your registration and postcode, and VS4 Autos can discuss whether the work is suitable for a mobile visit.",
+    "Battery services":
+      "Battery-related checks and replacement enquiries for vehicles that may be struggling to start. Include the vehicle make, model, and symptoms so the right next step can be discussed.",
+    "Pre-purchase car inspections":
+      "Pre-purchase inspections to help you assess a car before buying. Share the vehicle details and location in advance so availability and the inspection scope can be confirmed.",
+    "Car flipping":
+      "Ask VS4 Autos about its car flipping activity, the process involved, and any vehicles currently available. Confirm vehicle condition, work carried out, and terms directly before making a purchase.",
+  } satisfies Record<string, string>,
   footer: {
     summary: "Mobile vehicle care at your home or workplace.",
     groups: [

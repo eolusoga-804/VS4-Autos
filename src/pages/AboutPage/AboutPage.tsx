@@ -42,13 +42,7 @@ function AboutPage() {
               </span>
               <h3 className="about-page__service-title">{service}</h3>
               <p className="about-page__service-copy">
-                {service.toLowerCase().includes("servic")
-                  ? business.serviceDescriptions.servicing
-                  : service.toLowerCase().includes("brake")
-                    ? business.serviceDescriptions.brakes
-                    : service.toLowerCase().includes("diagnostic")
-                      ? business.serviceDescriptions.diagnostics
-                      : "Contact VS4 Autos to discuss your vehicle and request a quote."}
+                {business.serviceDescriptions[service]}
               </p>
             </article>
           ))}
