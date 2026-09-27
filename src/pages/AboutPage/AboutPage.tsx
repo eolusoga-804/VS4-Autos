@@ -6,7 +6,7 @@ import "./AboutPage.css";
 function AboutPage() {
   return (
     <main className="about-page">
-      <section className="about-page__intro">
+      <section className="about-page__intro" data-aos="fade-up">
         <p className="about-page__eyebrow">{business.coverage}</p>
         <h1 className="about-page__title">
           Practical vehicle care, brought to you
@@ -21,6 +21,7 @@ function AboutPage() {
       <section
         className="about-page__services"
         aria-labelledby="about-services-title"
+        data-aos="fade-up"
       >
         <div className="about-page__section-heading">
           <p className="about-page__eyebrow">What we do</p>
@@ -31,7 +32,11 @@ function AboutPage() {
 
         <div className="about-page__service-grid">
           {business.services.map((service, index) => (
-            <article className="about-page__service-card" key={service}>
+            <article
+              className="about-page__service-card"
+              key={service}
+              data-aos-delay={index * 50}
+            >
               <span className="about-page__service-number">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -53,6 +58,7 @@ function AboutPage() {
       <section
         className="about-page__approach"
         aria-labelledby="about-approach-title"
+        data-aos="fade-up"
       >
         <div>
           <p className="about-page__eyebrow">The VS4 Autos approach</p>
@@ -69,7 +75,11 @@ function AboutPage() {
         </ul>
       </section>
 
-      <section className="about-page__faqs" aria-labelledby="about-faq-title">
+      <section
+        className="about-page__faqs"
+        aria-labelledby="about-faq-title"
+        data-aos="fade-up"
+      >
         <div className="about-page__section-heading">
           <p className="about-page__eyebrow">Common questions</p>
           <h2 className="about-page__title" id="about-faq-title">
@@ -79,7 +89,11 @@ function AboutPage() {
         <FaqAccordion />
       </section>
 
-      <section className="about-page__area" aria-labelledby="about-area-title">
+      <section
+        className="about-page__area"
+        aria-labelledby="about-area-title"
+        data-aos="fade-up"
+      >
         <div>
           <p className="about-page__eyebrow">Local mobile support</p>
           <h2 className="about-page__title" id="about-area-title">

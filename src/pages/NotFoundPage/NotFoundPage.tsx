@@ -11,7 +11,11 @@ import "./NotFoundPage.css";
 function NotFoundPage() {
   return (
     <main className="not-found">
-      <section className="not-found__card" aria-labelledby="not-found-title">
+      <section
+        className="not-found__card"
+        aria-labelledby="not-found-title"
+        data-aos="zoom-in"
+      >
         <div className="not-found__icon" aria-hidden="true">
           <FontAwesomeIcon icon={faCompass} />
         </div>

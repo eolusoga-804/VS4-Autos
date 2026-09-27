@@ -91,7 +91,7 @@ function ContactPage() {
 
   return (
     <main className="contact-page">
-      <header className="contact-page__intro">
+      <header className="contact-page__intro" data-aos="fade-up">
         <p className="contact-page__eyebrow">{business.coverage}</p>
         <h1 className="contact-page__title">Contact {business.name}</h1>
         <p className="contact-page__copy">
@@ -100,7 +100,12 @@ function ContactPage() {
         </p>
       </header>
 
-      <form className="contact-page__form" onSubmit={handleSubmit} noValidate>
+      <form
+        className="contact-page__form"
+        onSubmit={handleSubmit}
+        noValidate
+        data-aos="fade-up"
+      >
         <div className="contact-page__grid">
           <label className="contact-page__field">
             <span>Name *</span>
