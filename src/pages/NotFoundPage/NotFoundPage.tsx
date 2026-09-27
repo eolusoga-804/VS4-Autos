@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCompass,
@@ -9,6 +9,16 @@ import { business } from "../../config/business";
 import "./NotFoundPage.css";
 
 function NotFoundPage() {
+  const navigate = useNavigate();
+
+  function handleGoBack() {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      navigate("/");
+    }
+  }
+
   return (
     <main className="not-found">
       <section
@@ -30,13 +40,20 @@ function NotFoundPage() {
         </p>
 
         <div className="not-found__actions">
-          <Link className="not-found__link not-found__link--primary" to="/">
-            <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
-            <span>Go to home</span>
-          </Link>
+          <button
+            className="not-found__link"
+            type="button"
+            onClick={handleGoBack}
+          >
+            Go back
+          </button>
           <Link className="not-found__link" to="/about">
             <FontAwesomeIcon icon={faWrench} aria-hidden="true" />
             <span>Explore services</span>
+          </Link>
+          <Link className="not-found__link not-found__link--primary" to="/">
+            <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
+            <span>Go to home</span>
           </Link>
         </div>
 
