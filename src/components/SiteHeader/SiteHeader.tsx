@@ -25,6 +25,18 @@ function SiteHeader() {
   return (
     <>
       <header className="site-header">
+        <span
+          className="site-header__orb site-header__orb--sky"
+          aria-hidden="true"
+        />
+        <span
+          className="site-header__orb site-header__orb--blue"
+          aria-hidden="true"
+        />
+        <span
+          className="site-header__orb site-header__orb--violet"
+          aria-hidden="true"
+        />
         <Link
           className="site-header__brand"
           to="/"

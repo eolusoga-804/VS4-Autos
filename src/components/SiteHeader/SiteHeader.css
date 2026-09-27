@@ -13,6 +13,8 @@
   padding: 0.45rem max(1rem, calc((100% - var(--content-width)) / 2));
   background: rgb(17 19 21 / 90%);
   backdrop-filter: blur(14px);
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .site-header__spacer {
@@ -137,7 +139,84 @@
   text-decoration: none;
 }
 
+.site-header__orb {
+  position: absolute;
+  z-index: 0;
+  width: 8rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  filter: blur(28px);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.site-header__orb--sky {
+  top: -1.6rem;
+  left: 18%;
+  background: #7dd3fc;
+  animation: header-orb-sky 2s ease-in-out infinite alternate;
+}
+
+.site-header__orb--blue {
+  top: 0.8rem;
+  left: 53%;
+  background: #3b82f6;
+  opacity: 0.2;
+  animation: header-orb-blue 3s ease-in-out infinite alternate;
+}
+
+.site-header__orb--violet {
+  top: -1.8rem;
+  right: 9%;
+  background: #a78bfa;
+  opacity: 0.18;
+  animation: header-orb-violet 2s ease-in-out infinite alternate;
+}
+
+.site-header__brand,
+.site-header__nav,
+.site-header__coverage,
+.site-header__menu-button {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes header-orb-sky {
+  from {
+    transform: translate(-1.5rem, 20%) scale(1.1);
+  }
+  to {
+    transform: translate(-4rem, 0.6rem) scale(1.7);
+  }
+}
+
+@keyframes header-orb-blue {
+  from {
+    transform: translate(0.5rem, 0.3rem) scale(1.2);
+  }
+  to {
+    transform: translate(-3.5rem, -2.5rem) scale(1.65);
+  }
+}
+
+@keyframes header-orb-violet {
+  from {
+    transform: translate(2rem, 1.4rem) scale(1.2);
+  }
+  to {
+    transform: translate(100%, -0.3rem) scale(1.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__orb {
+    animation: none;
+  }
+}
+
 @media (max-width: 700px) {
+  .site-header__link,
+  .site-header__coverage,
   .site-header__nav--desktop {
     display: none;
   }
@@ -176,11 +255,4 @@
 .site-header__link:focus-visible {
   outline: 2px solid var(--color-sky);
   outline-offset: 4px;
-}
-
-@media screen and (max-width: 320px) {
-  .site-header__link,
-  .site-header__coverage {
-    display: none;
-  }
 }
