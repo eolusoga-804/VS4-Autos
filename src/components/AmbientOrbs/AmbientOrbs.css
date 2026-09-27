@@ -27,7 +27,7 @@
   top: 42%;
   right: -12rem;
   background: #3b82f6;
-  opacity: 0.1;
+  opacity: 0.13;
   animation: ambient-orb-blue 7s ease-in-out infinite alternate;
 }
 
@@ -69,5 +69,39 @@
 @media (prefers-reduced-motion: reduce) {
   .ambient-orbs__orb {
     animation: none;
+  }
+}
+
+.ambient-orbs__orb--mint {
+  top: 68%;
+  left: 6%;
+  background: #34d399;
+  opacity: 0.14;
+  animation: ambient-orb-mint 8s ease-in-out infinite alternate;
+}
+
+.ambient-orbs__orb--rose {
+  top: 8%;
+  right: 12%;
+  background: #f0abfc;
+  opacity: 0.12;
+  animation: ambient-orb-rose 6s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-orb-mint {
+  from {
+    transform: translate(0, 0) scale(0.7);
+  }
+  to {
+    transform: translate(32vw, -18vh) scale(1.6);
+  }
+}
+
+@keyframes ambient-orb-rose {
+  from {
+    transform: translate(0, 0) scale(0.65);
+  }
+  to {
+    transform: translate(-30vw, 22vh) scale(1.85);
   }
 }
