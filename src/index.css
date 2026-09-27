@@ -6,3 +6,13 @@ body {
   background: var(--color-black);
   color: var(--color-white);
 }
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+.app-routes {
+  position: relative;
+  z-index: 1;
+}

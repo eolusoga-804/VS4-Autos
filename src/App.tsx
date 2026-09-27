@@ -3,6 +3,7 @@ import SiteHeader from "./components/SiteHeader/SiteHeader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SiteFooter from "./components/SiteFooter/SiteFooter";
 import HomeCarousel from "./components/HomeCarousel/HomeCarousel";
+import AmbientOrbs from "./components/AmbientOrbs/AmbientOrbs";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -105,15 +106,20 @@ function SiteLayout() {
 
 function App() {
   return (
-    <Routes>
-      <Route element={<SiteLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Route>
+    <>
+      <AmbientOrbs />
+      <div className="app-routes">
+        <Routes>
+          <Route element={<SiteLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
