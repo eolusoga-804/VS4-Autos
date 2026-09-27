@@ -198,3 +198,35 @@
     align-self: flex-start;
   }
 }
+
+.page__hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.page__hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(248 250 252 / 12%);
+  padding: 0.85rem;
+  background: #171a1d;
+}
+
+.page__hero-media {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .page__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .page__hero-copy {
+    align-items: center;
+    text-align: center;
+  }
+}
