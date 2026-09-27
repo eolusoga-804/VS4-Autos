@@ -3,6 +3,7 @@ import SiteHeader from "./components/SiteHeader/SiteHeader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import SiteFooter from "./components/SiteFooter/SiteFooter";
 
 import { business } from "./config/business";
 import "./App.css";
@@ -95,6 +96,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <SiteFooter />
     </>
   );
 }

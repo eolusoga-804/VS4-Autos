@@ -103,4 +103,39 @@ export const business = {
     diagnostics:
       "Engine diagnostics using an ODB scanner to help identify warning lights and vehicle faults.",
   },
+  footer: {
+    summary: "Mobile vehicle care at your home or workplace.",
+    groups: [
+      {
+        title: "Explore",
+        links: [
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        title: "Services",
+        links: [
+          { label: "Servicing", href: "/about" },
+          { label: "Brakes and diagnostics", href: "/about" },
+          { label: "Pre-purchase inspections", href: "/about" },
+        ],
+      },
+      {
+        title: "Contact",
+        links: [
+          { label: "Email VS4 Autos", href: "mailto:info@vs4autos.com" },
+          { label: "Call VS4 Autos", href: "" },
+          { label: "WhatsApp", href: "" },
+        ],
+      },
+    ],
+    socials: {
+      facebook: "",
+      instagram: "",
+      whatsapp: "",
+    },
+    copyright: "Vehicle care across High Peak and Greater Manchester.",
+  },
 } as const;

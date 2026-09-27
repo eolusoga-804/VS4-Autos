@@ -1,0 +1,169 @@
+.site-footer {
+  border-top: 1px solid rgb(248 250 252 / 14%);
+  padding: 1rem max(1rem, calc((100% - var(--content-width)) / 2)) 0.55rem;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgb(125 211 252 / 9%), transparent 45%),
+    #111315;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  gap: 1rem;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.site-footer__name {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer__summary,
+.site-footer__coverage {
+  margin: 0.25rem 0 0;
+  color: #c0c5cc;
+  font-size: 0.75rem;
+}
+
+.site-footer__groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.site-footer__heading {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.site-footer__toggle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  padding: 0.25rem 0;
+  background: transparent;
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 800;
+  text-align: left;
+}
+
+.site-footer__toggle span {
+  display: none;
+}
+
+.site-footer__links {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__links a {
+  color: #c0c5cc;
+  font-size: 0.74rem;
+  text-decoration: none;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: var(--color-sky);
+}
+
+.site-footer__socials {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.site-footer__social {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 1px solid rgb(248 250 252 / 20%);
+  color: var(--color-white);
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.site-footer__social:hover {
+  transform: translateY(-2px);
+}
+
+.site-footer__social--whatsapp:hover {
+  background: #16a34a;
+}
+
+.site-footer__social--facebook:hover,
+.site-footer__social--instagram:hover {
+  background: #2563eb;
+}
+
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  max-width: var(--content-width);
+  margin: 0.8rem auto 0;
+  border-top: 1px solid rgb(248 250 252 / 10%);
+  padding-top: 0.45rem;
+  color: var(--color-muted);
+  font-size: 0.65rem;
+}
+
+@media (max-width: 700px) {
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .site-footer__brand {
+    text-align: center;
+  }
+
+  .site-footer__socials {
+    justify-content: center;
+  }
+
+  .site-footer__groups {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .site-footer__group {
+    border-top: 1px solid rgb(248 250 252 / 12%);
+  }
+
+  .site-footer__toggle {
+    padding: 0.6rem 0;
+    cursor: pointer;
+  }
+
+  .site-footer__toggle span {
+    display: inline;
+    color: var(--color-sky);
+  }
+
+  .site-footer__links {
+    display: none;
+    padding: 0 0 0.6rem;
+  }
+
+  .site-footer__links--open {
+    display: grid;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
