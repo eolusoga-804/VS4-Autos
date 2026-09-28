@@ -229,11 +229,27 @@
 }
 
 .about-page__area-list li {
-  border: 1px solid rgb(125 211 252 / 40%);
+  border: 1px solid rgb(125 211 252 / 48%);
+  border-radius: 0.4rem;
   padding: 0.35rem 0.5rem;
+  background: rgb(125 211 252 / 9%);
   color: var(--color-sky);
   font-size: 0.75rem;
   font-weight: 700;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px rgb(255 255 255 / 8%);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+@media (min-width: 768px) {
+  .about-page__area-list li:hover {
+    transform: translateY(-2px);
+    border-color: rgb(125 211 252 / 80%);
+    background: rgb(125 211 252 / 17%);
+  }
 }
 
 @media (max-width: 600px) {

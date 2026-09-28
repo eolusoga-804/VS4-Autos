@@ -34,11 +34,26 @@
 }
 
 .page__services li {
-  border: 1px solid rgb(125 211 252 / 28%);
-  border-radius: 0.35rem;
+  border: 1px solid rgb(248 250 252 / 22%);
+  border-radius: 0.4rem;
   padding: 0.3rem 0.5rem;
+  background: rgb(248 250 252 / 7%);
   color: var(--color-white);
   font-size: 0.78rem;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px rgb(255 255 255 / 8%);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+@media (min-width: 768px) {
+  .page__services li:hover {
+    transform: translateY(-2px);
+    border-color: rgb(125 211 252 / 70%);
+    background: rgb(125 211 252 / 13%);
+  }
 }
 
 .page__services-section {
