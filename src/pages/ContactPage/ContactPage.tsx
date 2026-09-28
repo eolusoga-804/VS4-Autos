@@ -9,6 +9,7 @@ type FormValues = {
   email: string;
   vehicle: string;
   registration: string;
+  address: string;
   postcode: string;
   service: string;
   message: string;
@@ -22,6 +23,7 @@ const initialValues: FormValues = {
   email: "",
   vehicle: "",
   registration: "",
+  address: "",
   postcode: "",
   service: "",
   message: "",
@@ -70,6 +72,10 @@ function ContactPage() {
       nextErrors.vehicle = errorMessages.vehicleRequired;
     }
 
+    if (!values.address.trim()) {
+      nextErrors.address = errorMessages.addressRequired;
+    }
+
     if (!values.postcode.trim()) {
       nextErrors.postcode = errorMessages.postcodeRequired;
     } else if (
@@ -102,6 +108,7 @@ function ContactPage() {
       `Email: ${values.email.trim()}`,
       `Vehicle: ${values.vehicle.trim()}`,
       `Registration: ${values.registration.trim() || "Not provided"}`,
+      `Service address: ${values.address.trim()}`,
       `Postcode: ${values.postcode.trim()}`,
       `Service: ${values.service}`,
       `Details: ${values.message.trim()}`,
@@ -132,7 +139,7 @@ function ContactPage() {
         <h1 className="contact-page__title">Contact {business.name}</h1>
         <p className="contact-page__copy">
           Tell us about your vehicle and the service you need. Include your
-          postcode so we can check mobile service availability.
+          address and postcode so we can check mobile service availability.
         </p>
       </header>
 
@@ -225,6 +232,26 @@ function ContactPage() {
                 updateField("registration", event.target.value)
               }
             />
+          </label>
+
+          <label className="contact-page__field contact-page__field--wide">
+            <span>Service address *</span>
+            <textarea
+              name="address"
+              autoComplete="street-address"
+              rows={2}
+              maxLength={180}
+              placeholder="Street and town or city"
+              value={values.address}
+              onChange={(event) => updateField("address", event.target.value)}
+              aria-invalid={Boolean(errors.address)}
+              aria-describedby={
+                errors.address ? "contact-address-error" : undefined
+              }
+            />
+            {errors.address && (
+              <small id="contact-address-error">{errors.address}</small>
+            )}
           </label>
 
           <label className="contact-page__field">

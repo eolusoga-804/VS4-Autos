@@ -161,6 +161,7 @@ export const business = {
     note: "Looking for mobile mechanic support in",
   },
   contactFormErrors: {
+    addressRequired: 'Enter the service address.',
     nameRequired: "Enter your name.",
     phoneRequired: "Enter a phone number.",
     phoneInvalid: "Enter a phone number with 10 to 15 digits.",
