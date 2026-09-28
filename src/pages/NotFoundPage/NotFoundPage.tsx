@@ -30,14 +30,11 @@ function NotFoundPage() {
           <FontAwesomeIcon icon={faCompass} />
         </div>
 
-        <p className="not-found__eyebrow">404 · ROUTE NOT FOUND</p>
+        <p className="not-found__eyebrow">{business.notFound.eyebrow}</p>
         <h1 className="not-found__title" id="not-found-title">
-          This page has taken a wrong turn.
+          {business.notFound.title}
         </h1>
-        <p className="not-found__copy">
-          The address may be incorrect, or the page may have moved. You can head
-          back to the VS4 Autos home page or explore our services.
-        </p>
+        <p className="not-found__copy">{business.notFound.message}</p>
 
         <div className="not-found__actions">
           <button
@@ -45,20 +42,20 @@ function NotFoundPage() {
             type="button"
             onClick={handleGoBack}
           >
-            Go back
+            {business.notFound.backButton}
           </button>
           <Link className="not-found__link" to="/about">
             <FontAwesomeIcon icon={faWrench} aria-hidden="true" />
-            <span>Explore services</span>
+            <span>{business.notFound.servicesButton}</span>
           </Link>
           <Link className="not-found__link not-found__link--primary" to="/">
             <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
-            <span>Go to home</span>
+            <span>{business.notFound.homeButton}</span>
           </Link>
         </div>
 
         <p className="not-found__note">
-          Looking for mobile mechanic support in {business.coverage}?
+          {business.notFound.note} {business.coverage}?
         </p>
       </section>
     </main>

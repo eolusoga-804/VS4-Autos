@@ -150,4 +150,14 @@ export const business = {
     },
     copyright: "Vehicle care across High Peak and Greater Manchester.",
   },
+  notFound: {
+    eyebrow: "404 · ROUTE NOT FOUND",
+    title: "This page has taken a wrong turn.",
+    message:
+      "The address may be incorrect, or the page may have moved. You can head back to the VS4 Autos home page or explore our services.",
+    homeButton: "Go to home",
+    servicesButton: "Explore services",
+    backButton: "Go back",
+    note: "Looking for mobile mechanic support in",
+  },
 } as const;
