@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SiteFooter from "./components/SiteFooter/SiteFooter";
@@ -96,9 +96,9 @@ function HomePage() {
               {business.homeContact.message}
             </p>
           </div>
-          <a className="page__contact-link" href="/contact">
+          <Link className="page__contact-link" to="/contact">
             {business.homeContact.buttonLabel}
-          </a>
+          </Link>
         </section>
       </main>
     </>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -32,9 +33,9 @@ function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <a className="site-footer__name" href="/">
+          <Link className="site-footer__name" to="/">
             {business.name}
-          </a>
+          </Link>
           <p className="site-footer__summary">{business.footer.summary}</p>
           <p className="site-footer__coverage">{business.coverage}</p>
 
@@ -89,7 +90,11 @@ function SiteFooter() {
                     .filter((link) => link.href)
                     .map((link) => (
                       <li key={link.label}>
-                        <a href={link.href}>{link.label}</a>
+                        {link.href.startsWith("/") ? (
+                          <Link to={link.href}>{link.label}</Link>
+                        ) : (
+                          <a href={link.href}>{link.label}</a>
+                        )}
                       </li>
                     ))}
                 </ul>
