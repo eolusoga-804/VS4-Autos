@@ -253,3 +253,76 @@
   transform: rotate(50deg);
   transition: all 1s;
 }
+
+.about-page__services {
+  background-image:
+    linear-gradient(rgb(125 211 252 / 20%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(125 211 252 / 20%) 1px, transparent 1px),
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      rgb(125 211 252 / 8%) 49%,
+      rgb(125 211 252 / 8%) 51%,
+      transparent 52%
+    );
+  background-size:
+    24px 24px,
+    24px 24px,
+    40px 40px;
+  animation: about-grid-drift 18s linear infinite;
+}
+
+.about-page__faqs {
+  background-color: #171a1d;
+  background-image:
+    linear-gradient(rgb(248 250 252 / 11%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(248 250 252 / 11%) 1px, transparent 1px);
+  background-size: 18px 18px;
+  animation: about-grid-shift 14s ease-in-out infinite alternate;
+}
+
+.about-page__area {
+  background-image:
+    linear-gradient(rgb(125 211 252 / 14%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(125 211 252 / 14%) 1px, transparent 1px),
+    radial-gradient(ellipse at 10% 0%, rgb(125 211 252 / 12%), transparent 55%);
+  background-size:
+    28px 28px,
+    28px 28px,
+    auto;
+  animation: about-grid-area 20s ease-in-out infinite alternate;
+}
+
+@keyframes about-grid-drift {
+  to {
+    background-position:
+      24px 24px,
+      24px 24px,
+      40px -40px;
+  }
+}
+
+@keyframes about-grid-shift {
+  to {
+    background-position:
+      18px -18px,
+      -18px 18px;
+  }
+}
+
+@keyframes about-grid-area {
+  to {
+    background-position:
+      -28px 28px,
+      28px -28px,
+      20px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__services,
+  .about-page__faqs,
+  .about-page__area {
+    animation: none;
+  }
+}
