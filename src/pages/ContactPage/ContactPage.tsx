@@ -45,52 +45,53 @@ function ContactPage() {
     setFallbackMailto("");
 
     const nextErrors: FormErrors = {};
+    const errorMessages = business.contactFormErrors;
 
     if (!values.name.trim()) {
-      nextErrors.name = "Enter your name.";
+      nextErrors.name = errorMessages.nameRequired;
     }
 
     if (!values.phone.trim()) {
-      nextErrors.phone = "Enter a phone number.";
+      nextErrors.phone = errorMessages.phoneRequired;
     } else {
       const phoneDigits = values.phone.replace(/\D/g, "");
       if (phoneDigits.length < 10 || phoneDigits.length > 15) {
-        nextErrors.phone = "Enter a phone number with 10 to 15 digits.";
+        nextErrors.phone = errorMessages.phoneInvalid;
       }
     }
 
     if (!values.email.trim()) {
-      nextErrors.email = "Enter your email address.";
+      nextErrors.email = errorMessages.emailRequired;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
-      nextErrors.email = "Enter a valid email address.";
+      nextErrors.email = errorMessages.emailInvalid;
     }
 
     if (!values.vehicle.trim()) {
-      nextErrors.vehicle = "Enter your vehicle make and model.";
+      nextErrors.vehicle = errorMessages.vehicleRequired;
     }
 
     if (!values.postcode.trim()) {
-      nextErrors.postcode = "Enter your UK postcode.";
+      nextErrors.postcode = errorMessages.postcodeRequired;
     } else if (
       !/^(GIR 0AA|[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2})$/i.test(
         values.postcode.trim(),
       )
     ) {
-      nextErrors.postcode = "Enter a valid UK postcode.";
+      nextErrors.postcode = errorMessages.postcodeInvalid;
     }
 
     if (!values.service) {
-      nextErrors.service = "Choose a service.";
+      nextErrors.service = errorMessages.serviceRequired;
     }
 
     if (!values.message.trim()) {
-      nextErrors.message = "Describe how we can help.";
+      nextErrors.message = errorMessages.messageRequired;
     }
 
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) {
-      setFormError("Please correct the highlighted fields and try again.");
+      setFormError(errorMessages.invalidForm);
       return;
     }
 

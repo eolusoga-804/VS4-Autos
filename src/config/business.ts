@@ -160,4 +160,17 @@ export const business = {
     backButton: "Go back",
     note: "Looking for mobile mechanic support in",
   },
+  contactFormErrors: {
+    nameRequired: "Enter your name.",
+    phoneRequired: "Enter a phone number.",
+    phoneInvalid: "Enter a phone number with 10 to 15 digits.",
+    emailRequired: "Enter your email address.",
+    emailInvalid: "Enter a valid email address.",
+    vehicleRequired: "Enter your vehicle make and model.",
+    postcodeRequired: "Enter your UK postcode.",
+    postcodeInvalid: "Enter a valid UK postcode.",
+    serviceRequired: "Choose a service.",
+    messageRequired: "Describe how we can help.",
+    invalidForm: "Please correct the highlighted fields and try again.",
+  },
 } as const;
