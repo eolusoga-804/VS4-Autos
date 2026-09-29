@@ -9,8 +9,10 @@ import {
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { business } from "../../config/business";
 import ContactMap from "../../components/ContactMap/ContactMap";
-import { geocodeBuildingAddress } from "../../services/geocoding";
-import type { BuildingLocation } from "../../services/geocoding";
+import {
+  geocodeBuildingAddress,
+  type BuildingLocation,
+} from "../../services/geocoding";
 import "leaflet/dist/leaflet.css";
 import "./ContactPage.css";
 
@@ -79,16 +81,14 @@ function ContactPage() {
     const address = values.address.trim();
     const postcode = values.postcode.trim();
 
-    if (!address || !postcode || !ukPostcodePattern.test(postcode)) {
+    if (!address || (postcode && !ukPostcodePattern.test(postcode))) {
       const inputErrors: FormErrors = {};
 
       if (!address) {
         inputErrors.address = errorMessages.addressRequired;
       }
 
-      if (!postcode) {
-        inputErrors.postcode = errorMessages.postcodeRequired;
-      } else if (!ukPostcodePattern.test(postcode)) {
+      if (postcode && !ukPostcodePattern.test(postcode)) {
         inputErrors.postcode = errorMessages.postcodeInvalid;
       }
 
@@ -161,9 +161,10 @@ function ContactPage() {
       nextErrors.address = errorMessages.addressRequired;
     }
 
-    if (!values.postcode.trim()) {
-      nextErrors.postcode = errorMessages.postcodeRequired;
-    } else if (!ukPostcodePattern.test(values.postcode.trim())) {
+    if (
+      values.postcode.trim() &&
+      !ukPostcodePattern.test(values.postcode.trim())
+    ) {
       nextErrors.postcode = errorMessages.postcodeInvalid;
     }
 
@@ -191,7 +192,7 @@ function ContactPage() {
       `${messageCopy.vehicle}: ${values.vehicle.trim()}`,
       `${messageCopy.registration}: ${values.registration.trim() || messageCopy.notProvided}`,
       `${messageCopy.address}: ${values.address.trim()}`,
-      `${messageCopy.postcode}: ${values.postcode.trim()}`,
+      `${messageCopy.postcode}: ${values.postcode.trim() || messageCopy.notProvided}`,
       `${messageCopy.service}: ${values.service}`,
       `${messageCopy.details}: ${values.message.trim()}`,
     ].join("\n");
@@ -422,9 +423,7 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>
-              {copy.fields.postcode} {copy.requiredMark}
-            </span>
+            <span>{copy.fields.postcode}</span>
             <input
               name="postcode"
               autoComplete="postal-code"

@@ -176,7 +176,6 @@ export const business = {
     emailRequired: "Enter your email address.",
     emailInvalid: "Enter a valid email address.",
     vehicleRequired: "Enter your vehicle make and model.",
-    postcodeRequired: "Enter your UK postcode.",
     postcodeInvalid: "Enter a valid UK postcode.",
     serviceRequired: "Choose a service.",
     messageRequired: "Describe how we can help.",
@@ -194,7 +193,7 @@ export const business = {
       vehicle: "Vehicle make and model",
       registration: "Registration",
       address: "Service address",
-      postcode: "UK postcode",
+      postcode: "UK postcode (optional)",
       service: "Service required",
       message: "How can we help?",
     },
@@ -210,7 +209,7 @@ export const business = {
       privacyNote:
         "Choosing this sends your service address and postcode to Geoapify to locate the building.",
       noBuildingMatch:
-        "We couldn't confirm a house-level match. Check the address and postcode, then try again.",
+        "We couldn't confirm a house-level match. Check the street address. Adding a postcode may help locate the building.",
       lookupError:
         "The address lookup isn't available right now. Please try again later.",
       exactMatchLabel: "Building-level address match",

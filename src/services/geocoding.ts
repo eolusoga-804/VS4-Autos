@@ -23,7 +23,7 @@ const BUILDING_CONFIDENCE_THRESHOLD = 0.95;
 
 export async function geocodeBuildingAddress(
   address: string,
-  postcode: string,
+  postcode?: string,
 ): Promise<BuildingLocation | null> {
   const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;
 
@@ -31,8 +31,12 @@ export async function geocodeBuildingAddress(
     throw new Error("Geoapify API key is missing.");
   }
 
+  const searchText = [address.trim(), postcode?.trim(), "United Kingdom"]
+    .filter(Boolean)
+    .join(", ");
+
   const query = new URLSearchParams({
-    text: `${address.trim()}, ${postcode.trim()}, United Kingdom`,
+    text: searchText,
     format: "json",
     limit: "5",
     filter: "countrycode:gb",
