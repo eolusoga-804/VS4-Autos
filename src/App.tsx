@@ -67,19 +67,53 @@ function HomePage() {
         </section>
 
         <section
+          className="page__process"
+          aria-labelledby="home-process-heading"
+          data-aos="fade-up"
+        >
+          <div className="page__process-heading">
+            <p className="page__eyebrow">{business.coverage}</p>
+            <h2 className="page__services-heading" id="home-process-heading">
+              {business.homeProcess.heading}
+            </h2>
+            <p className="page__intro">{business.homeProcess.intro}</p>
+          </div>
+
+          <div className="page__process-grid">
+            {business.homeProcess.steps.map((step, index) => (
+              <article
+                className="page__process-card"
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                key={step.title}
+              >
+                <span className="page__process-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
           className="page__offer"
           aria-labelledby="offer-heading"
           data-aos="zoom-in"
         >
           <div>
-            <p className="page__offer-label">{business.homePage.offerEyebrow}</p>
+            <p className="page__offer-label">
+              {business.homePage.offerEyebrow}
+            </p>
             <h2 className="page__offer-heading" id="offer-heading">
               {business.offer.firstFullServiceDiscount} your first full service
             </h2>
             <p className="page__offer-note">{business.offer.note}</p>
           </div>
           <p className="page__offer-price">
-            {business.homePage.offerPriceLabel} <strong>{business.offer.fullServiceFrom}</strong>
+            {business.homePage.offerPriceLabel}{" "}
+            <strong>{business.offer.fullServiceFrom}</strong>
           </p>
         </section>
 

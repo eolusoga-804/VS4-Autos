@@ -277,4 +277,25 @@ export const business = {
     closeNavigationLabel: "Close navigation menu",
     mobileContactLabel: "Contact VS4 Autos",
   },
+  homeProcess: {
+    heading: "How a mobile visit works",
+    intro: "Start with a few details about your vehicle and what you need.",
+    steps: [
+      {
+        title: "Tell us about your vehicle",
+        description:
+          "Share your vehicle details, service address, postcode, and the work you need.",
+      },
+      {
+        title: "Discuss the request",
+        description:
+          "VS4 Autos can discuss the work, mobile availability, and a quote for your vehicle.",
+      },
+      {
+        title: "Arrange a visit",
+        description:
+          "If the work and location are suitable, arrange a visit to your home or workplace.",
+      },
+    ],
+  },
 } as const;
