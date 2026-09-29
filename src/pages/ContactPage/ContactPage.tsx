@@ -30,6 +30,9 @@ const initialValues: FormValues = {
 };
 
 function ContactPage() {
+  const copy = business.contactPage;
+  const errorMessages = business.contactFormErrors;
+
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [formError, setFormError] = useState("");
@@ -47,7 +50,6 @@ function ContactPage() {
     setFallbackMailto("");
 
     const nextErrors: FormErrors = {};
-    const errorMessages = business.contactFormErrors;
 
     if (!values.name.trim()) {
       nextErrors.name = errorMessages.nameRequired;
@@ -101,23 +103,26 @@ function ContactPage() {
       return;
     }
 
+    const messageCopy = copy.whatsappMessage;
     const whatsappMessage = [
-      `New enquiry for ${business.name}`,
-      `Name: ${values.name.trim()}`,
-      `Phone: ${values.phone.trim()}`,
-      `Email: ${values.email.trim()}`,
-      `Vehicle: ${values.vehicle.trim()}`,
-      `Registration: ${values.registration.trim() || "Not provided"}`,
-      `Service address: ${values.address.trim()}`,
-      `Postcode: ${values.postcode.trim()}`,
-      `Service: ${values.service}`,
-      `Details: ${values.message.trim()}`,
+      `${messageCopy.title} ${business.name}`,
+      `${messageCopy.name}: ${values.name.trim()}`,
+      `${messageCopy.phone}: ${values.phone.trim()}`,
+      `${messageCopy.email}: ${values.email.trim()}`,
+      `${messageCopy.vehicle}: ${values.vehicle.trim()}`,
+      `${messageCopy.registration}: ${values.registration.trim() || messageCopy.notProvided}`,
+      `${messageCopy.address}: ${values.address.trim()}`,
+      `${messageCopy.postcode}: ${values.postcode.trim()}`,
+      `${messageCopy.service}: ${values.service}`,
+      `${messageCopy.details}: ${values.message.trim()}`,
     ].join("\n");
 
     const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
 
     if (!whatsappNumber) {
-      const subject = encodeURIComponent(`New enquiry for ${business.name}`);
+      const subject = encodeURIComponent(
+        `${messageCopy.title} ${business.name}`,
+      );
       const body = encodeURIComponent(whatsappMessage);
 
       setFormError(business.contact.whatsappFallbackMessage);
@@ -136,11 +141,10 @@ function ContactPage() {
     <main className="contact-page">
       <header className="contact-page__intro" data-aos="fade-up">
         <p className="contact-page__eyebrow">{business.coverage}</p>
-        <h1 className="contact-page__title">Contact {business.name}</h1>
-        <p className="contact-page__copy">
-          Tell us about your vehicle and the service you need. Include your
-          address and postcode so we can check mobile service availability.
-        </p>
+        <h1 className="contact-page__title">
+          {copy.title} {business.name}
+        </h1>
+        <p className="contact-page__copy">{copy.intro}</p>
       </header>
 
       <form
@@ -151,7 +155,9 @@ function ContactPage() {
       >
         <div className="contact-page__grid">
           <label className="contact-page__field">
-            <span>Name *</span>
+            <span>
+              {copy.fields.name} {copy.requiredMark}
+            </span>
             <input
               name="name"
               autoComplete="name"
@@ -167,7 +173,9 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>Phone *</span>
+            <span>
+              {copy.fields.phone} {copy.requiredMark}
+            </span>
             <input
               name="phone"
               type="tel"
@@ -186,7 +194,9 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>Email *</span>
+            <span>
+              {copy.fields.email} {copy.requiredMark}
+            </span>
             <input
               name="email"
               type="email"
@@ -205,11 +215,13 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>Vehicle make and model *</span>
+            <span>
+              {copy.fields.vehicle} {copy.requiredMark}
+            </span>
             <input
               name="vehicle"
               maxLength={100}
-              placeholder="e.g. Ford Fiesta"
+              placeholder={copy.placeholders.vehicle}
               value={values.vehicle}
               onChange={(event) => updateField("vehicle", event.target.value)}
               aria-invalid={Boolean(errors.vehicle)}
@@ -223,7 +235,7 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>Registration</span>
+            <span>{copy.fields.registration}</span>
             <input
               name="registration"
               maxLength={10}
@@ -235,13 +247,15 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field contact-page__field--wide">
-            <span>Service address *</span>
+            <span>
+              {copy.fields.address} {copy.requiredMark}
+            </span>
             <textarea
               name="address"
               autoComplete="street-address"
               rows={2}
               maxLength={180}
-              placeholder="Street and town or city"
+              placeholder={copy.placeholders.address}
               value={values.address}
               onChange={(event) => updateField("address", event.target.value)}
               aria-invalid={Boolean(errors.address)}
@@ -255,7 +269,9 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field">
-            <span>UK postcode *</span>
+            <span>
+              {copy.fields.postcode} {copy.requiredMark}
+            </span>
             <input
               name="postcode"
               autoComplete="postal-code"
@@ -273,7 +289,9 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field contact-page__field--wide">
-            <span>Service required *</span>
+            <span>
+              {copy.fields.service} {copy.requiredMark}
+            </span>
             <select
               name="service"
               value={values.service}
@@ -283,7 +301,7 @@ function ContactPage() {
                 errors.service ? "contact-service-error" : undefined
               }
             >
-              <option value="">Choose a service</option>
+              <option value="">{copy.placeholders.service}</option>
               {business.services.map((service) => (
                 <option key={service} value={service}>
                   {service}
@@ -296,7 +314,9 @@ function ContactPage() {
           </label>
 
           <label className="contact-page__field contact-page__field--wide">
-            <span>How can we help? *</span>
+            <span>
+              {copy.fields.message} {copy.requiredMark}
+            </span>
             <textarea
               name="message"
               rows={5}
@@ -322,14 +342,14 @@ function ContactPage() {
 
         {fallbackMailto && (
           <a className="contact-page__email-fallback" href={fallbackMailto}>
-            Open prefilled email
+            {copy.emailFallback}
           </a>
         )}
 
         <button className="contact-page__submit" type="submit">
-          Prepare WhatsApp enquiry
+          {copy.submit}
         </button>
-        <p className="contact-page__required">* Required fields</p>
+        <p className="contact-page__required">{copy.requiredNote}</p>
       </form>
     </main>
   );
