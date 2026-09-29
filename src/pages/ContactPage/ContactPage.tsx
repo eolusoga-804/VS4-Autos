@@ -8,6 +8,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import "leaflet/dist/leaflet.css";
 import "./ContactPage.css";
 
 type FormValues = {
