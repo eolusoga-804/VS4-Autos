@@ -136,11 +136,7 @@ export const business = {
       },
       {
         title: "Contact",
-        links: [
-          { label: "Email VS4 Autos", href: "mailto:info@vs4autos.com" },
-          { label: "Call VS4 Autos", href: "" },
-          { label: "WhatsApp", href: "" },
-        ],
+        links: [],
       },
     ],
     socials: {
@@ -149,6 +145,12 @@ export const business = {
       whatsapp: "",
     },
     copyright: "Vehicle care across High Peak and Greater Manchester.",
+    contactLabels: {
+      email: "Email",
+      phone: "Call",
+      whatsapp: "WhatsApp",
+      enquiry: "Send an enquiry",
+    },
   },
   notFound: {
     eyebrow: "404 · ROUTE NOT FOUND",

@@ -25,7 +25,18 @@ function SiteFooter() {
     setActiveGroup((current) => (current === index ? null : index));
   }
 
-  const socials = Object.entries(business.footer.socials).filter(([, href]) =>
+  const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
+  const phoneLink = business.contact.phone.replace(/[^\d+]/g, "");
+  const contactLabels = business.footer.contactLabels;
+
+  const socialUrls = {
+    ...business.footer.socials,
+    whatsapp:
+      business.footer.socials.whatsapp ||
+      (whatsappNumber ? `https://wa.me/${whatsappNumber}` : ""),
+  };
+
+  const socials = Object.entries(socialUrls).filter(([, href]) =>
     Boolean(href),
   ) as [SocialName, string][];
 
@@ -38,6 +49,12 @@ function SiteFooter() {
           </Link>
           <p className="site-footer__summary">{business.footer.summary}</p>
           <p className="site-footer__coverage">{business.coverage}</p>
+
+          {business.contact.address && (
+            <address className="site-footer__address">
+              {business.contact.address}
+            </address>
+          )}
 
           {socials.length > 0 && (
             <nav className="site-footer__socials" aria-label="Social media">
@@ -67,7 +84,34 @@ function SiteFooter() {
                     label: service,
                     href: "/about",
                   }))
-                : group.links;
+                : group.title === "Contact"
+                  ? [
+                      {
+                        label: `${contactLabels.email} ${business.name}`,
+                        href: `mailto:${business.contact.email}`,
+                      },
+                      ...(business.contact.phone
+                        ? [
+                            {
+                              label: `${contactLabels.phone} ${business.contact.phone}`,
+                              href: `tel:${phoneLink}`,
+                            },
+                          ]
+                        : []),
+                      ...(whatsappNumber
+                        ? [
+                            {
+                              label: contactLabels.whatsapp,
+                              href: `https://wa.me/${whatsappNumber}`,
+                            },
+                          ]
+                        : []),
+                      {
+                        label: contactLabels.enquiry,
+                        href: "/contact",
+                      },
+                    ]
+                  : group.links;
 
             return (
               <section className="site-footer__group" key={group.title}>
