@@ -536,6 +536,35 @@ function ContactPage() {
         </button>
         <p className="contact-page__required">{copy.requiredNote}</p>
       </form>
+
+      <section
+        className="contact-page__preparation"
+        aria-labelledby="contact-preparation-heading"
+        data-aos="fade-up"
+      >
+        <div className="contact-page__preparation-heading">
+          <p className="contact-page__preparation-eyebrow">
+            {copy.afterForm.eyebrow}
+          </p>
+          <h2 id="contact-preparation-heading">{copy.afterForm.heading}</h2>
+          <p>{copy.afterForm.intro}</p>
+        </div>
+
+        <div className="contact-page__preparation-grid">
+          {copy.afterForm.items.map((item, index) => (
+            <article
+              className="contact-page__preparation-card"
+              key={item.title}
+            >
+              <span className="contact-page__preparation-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

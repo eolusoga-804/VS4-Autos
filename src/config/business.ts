@@ -241,6 +241,29 @@ export const business = {
         whatsapp: "WhatsApp",
       },
     },
+    afterForm: {
+      eyebrow: "A smoother mobile visit",
+      heading: "Help us prepare for your visit",
+      intro:
+        "A few useful details help us understand the job and plan the visit.",
+      items: [
+        {
+          title: "Vehicle details",
+          description:
+            "Include the make, model, year, and registration if you know them.",
+        },
+        {
+          title: "What the car is doing",
+          description:
+            "Describe when the issue started, any warning lights, and sounds or changes you have noticed.",
+        },
+        {
+          title: "Access and parking",
+          description:
+            "Mention any access instructions and where the vehicle can be safely parked for the work.",
+        },
+      ],
+    },
   },
   aboutPage: {
     introTitle: "Practical vehicle care, brought to you",
