@@ -564,6 +564,16 @@ function ContactPage() {
             </article>
           ))}
         </div>
+
+        {phoneLink && (
+          <a
+            className="contact-page__preparation-call"
+            href={`tel:${phoneLink}`}
+          >
+            <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
+            <span>{copy.afterForm.callButtonLabel}</span>
+          </a>
+        )}
       </section>
     </main>
   );

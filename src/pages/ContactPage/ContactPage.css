@@ -405,3 +405,34 @@
     text-align: center;
   }
 }
+
+.contact-page__preparation-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  max-width: 300px;
+  min-width: 100%;
+  margin-top: 0.55rem;
+  border: 1px solid #0284c7;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.7rem;
+  background: rgb(125 211 252 / 12%);
+  color: var(--color-sky);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.contact-page__preparation-call:hover {
+  transform: translateY(-1px);
+  background: rgb(125 211 252 / 22%);
+}
+
+.contact-page__preparation-call:focus-visible {
+  outline: 2px solid var(--color-sky);
+  outline-offset: 2px;
+}

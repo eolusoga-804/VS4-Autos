@@ -3,7 +3,7 @@ export const business = {
   tagline: "Your trusted partner in automotive care and sales",
   coverage: "High Peak & Greater Manchester",
   contact: {
-    phone: "",
+    phone: "+2349124416909",
     address: "",
     email: "info@vs4autos.com",
     website: "https://vs4autos.com",
@@ -263,6 +263,7 @@ export const business = {
             "Mention any access instructions and where the vehicle can be safely parked for the work.",
         },
       ],
+      callButtonLabel: "Call VS4 Autos",
     },
   },
   aboutPage: {
