@@ -263,3 +263,7 @@
     text-align: center;
   }
 }
+
+.contact-page__map {
+  margin-block: 0.75rem;
+}

@@ -8,6 +8,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import ContactMap from "../../components/ContactMap/ContactMap";
 import "leaflet/dist/leaflet.css";
 import "./ContactPage.css";
 
@@ -223,6 +224,14 @@ function ContactPage() {
             </div>
           )}
         </div>
+      </section>
+
+      <section
+        className="contact-page__map"
+        aria-label={business.coverage}
+        data-aos="fade-up"
+      >
+        <ContactMap />
       </section>
 
       <form
