@@ -36,9 +36,7 @@ function SiteFooter() {
       (whatsappNumber ? `https://wa.me/${whatsappNumber}` : ""),
   };
 
-  const socials = Object.entries(socialUrls).filter(([, href]) =>
-    Boolean(href),
-  ) as [SocialName, string][];
+  const socialNames = Object.keys(socialIcons) as SocialName[];
 
   return (
     <footer className="site-footer">
@@ -56,22 +54,34 @@ function SiteFooter() {
             </address>
           )}
 
-          {socials.length > 0 && (
-            <nav className="site-footer__socials" aria-label="Social media">
-              {socials.map(([name, href]) => (
+          <nav className="site-footer__socials" aria-label="Social media">
+            {socialNames.map((name) => {
+              const href = socialUrls[name];
+              const label = business.footer.socialLabels[name];
+
+              return href ? (
                 <a
                   className={`site-footer__social site-footer__social--${name}`}
                   href={href}
                   key={name}
-                  aria-label={`Visit ${name}`}
+                  aria-label={label}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <FontAwesomeIcon icon={socialIcons[name]} />
                 </a>
-              ))}
-            </nav>
-          )}
+              ) : (
+                <span
+                  className={`site-footer__social site-footer__social--${name}`}
+                  key={name}
+                  aria-label={`${label}: ${business.footer.socialLabels.pending}`}
+                  title={business.footer.socialLabels.pending}
+                >
+                  <FontAwesomeIcon icon={socialIcons[name]} />
+                </span>
+              );
+            })}
+          </nav>
         </div>
 
         <div className="site-footer__groups">

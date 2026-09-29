@@ -151,6 +151,12 @@ export const business = {
       whatsapp: "WhatsApp",
       enquiry: "Send an enquiry",
     },
+    socialLabels: {
+      facebook: "Facebook",
+      instagram: "Instagram",
+      whatsapp: "WhatsApp",
+      pending: "link to be added",
+    },
   },
   notFound: {
     eyebrow: "404 · ROUTE NOT FOUND",
