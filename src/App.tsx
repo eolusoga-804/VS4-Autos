@@ -23,7 +23,7 @@ function HomePage() {
         >
           <div className="page__hero-copy" data-aos="fade-left">
             <p className="page__eyebrow">
-              MOBILE MECHANIC · {business.coverage}
+              {business.homePage.eyebrow} · {business.coverage}
             </p>
             <h1 className="page__title" id="home-title">
               {business.name}
@@ -42,7 +42,7 @@ function HomePage() {
           data-aos="flip-up"
         >
           <h2 className="page__services-heading" id="services-heading">
-            Mobile mechanic services
+            {business.homePage.servicesHeading}
           </h2>
           <ul className="page__services">
             {business.services.map((service) => (
@@ -72,14 +72,14 @@ function HomePage() {
           data-aos="zoom-in"
         >
           <div>
-            <p className="page__offer-label">New customer offer</p>
+            <p className="page__offer-label">{business.homePage.offerEyebrow}</p>
             <h2 className="page__offer-heading" id="offer-heading">
               {business.offer.firstFullServiceDiscount} your first full service
             </h2>
             <p className="page__offer-note">{business.offer.note}</p>
           </div>
           <p className="page__offer-price">
-            Full service from <strong>{business.offer.fullServiceFrom}</strong>
+            {business.homePage.offerPriceLabel} <strong>{business.offer.fullServiceFrom}</strong>
           </p>
         </section>
 

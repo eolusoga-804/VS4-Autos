@@ -224,4 +224,10 @@ export const business = {
     faqHeading: "Before you book",
     areaEyebrow: "Local mobile support",
   },
+  homePage: {
+    eyebrow: "MOBILE MECHANIC",
+    servicesHeading: "Mobile mechanic services",
+    offerEyebrow: "New customer offer",
+    offerPriceLabel: "Full service from",
+  },
 } as const;
