@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { business } from "../../config/business";
 import "./SiteHeader.css";
 
@@ -53,9 +53,16 @@ function SiteHeader() {
           aria-label={headerCopy.mainNavigationLabel}
         >
           {business.navigation.map((item) => (
-            <Link className="site-header__link" to={item.href} key={item.href}>
+            <NavLink
+              className={({ isActive }) =>
+                `site-header__link${isActive ? " site-header__link--active" : ""}`
+              }
+              to={item.href}
+              end={item.href === "/"}
+              key={item.href}
+            >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -99,14 +106,17 @@ function SiteHeader() {
 
             <nav className="site-header__sidebar-nav">
               {business.navigation.map((item) => (
-                <Link
-                  className="site-header__sidebar-link"
+                <NavLink
+                  className={({ isActive }) =>
+                    `site-header__sidebar-link${isActive ? " site-header__sidebar-link--active" : ""}`
+                  }
                   to={item.href}
+                  end={item.href === "/"}
                   key={item.href}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </nav>
 

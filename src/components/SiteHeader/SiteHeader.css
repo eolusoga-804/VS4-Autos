@@ -256,3 +256,17 @@
   outline: 2px solid var(--color-sky);
   outline-offset: 4px;
 }
+
+.site-header__link--active {
+  color: var(--color-sky);
+  border-bottom: 1px solid;
+  padding-bottom: 0.5rem;
+  transform: scale(1.2);
+  transition: transform 500s;
+}
+
+.site-header__sidebar-link--active {
+  border-color: rgb(125 211 252 / 60%);
+  background: rgb(125 211 252 / 10%);
+  color: var(--color-sky);
+}
