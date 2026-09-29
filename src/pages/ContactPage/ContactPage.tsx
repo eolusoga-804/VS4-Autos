@@ -1,6 +1,13 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { business } from "../../config/business";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import "./ContactPage.css";
 
 type FormValues = {
@@ -32,6 +39,9 @@ const initialValues: FormValues = {
 function ContactPage() {
   const copy = business.contactPage;
   const errorMessages = business.contactFormErrors;
+  const details = copy.directContact;
+  const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
+  const phoneLink = business.contact.phone.replace(/[^\d+]/g, "");
 
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -146,6 +156,73 @@ function ContactPage() {
         </h1>
         <p className="contact-page__copy">{copy.intro}</p>
       </header>
+
+      <section
+        className="contact-page__details"
+        aria-labelledby="contact-details-heading"
+        data-aos="fade-up"
+      >
+        <div className="contact-page__details-heading">
+          <h2 id="contact-details-heading">{details.heading}</h2>
+          <p>{details.intro}</p>
+        </div>
+
+        <div className="contact-page__details-grid">
+          <div className="contact-page__detail">
+            <FontAwesomeIcon icon={faLocationDot} aria-hidden="true" />
+            <div>
+              <span>{details.labels.coverage}</span>
+              <strong>{business.coverage}</strong>
+            </div>
+          </div>
+
+          {business.contact.address && (
+            <div className="contact-page__detail">
+              <FontAwesomeIcon icon={faLocationDot} aria-hidden="true" />
+              <div>
+                <span>{details.labels.address}</span>
+                <strong>{business.contact.address}</strong>
+              </div>
+            </div>
+          )}
+
+          {business.contact.phone && (
+            <div className="contact-page__detail">
+              <FontAwesomeIcon icon={faPhone} aria-hidden="true" />
+              <div>
+                <span>{details.labels.phone}</span>
+                <a href={`tel:${phoneLink}`}>{business.contact.phone}</a>
+              </div>
+            </div>
+          )}
+
+          <div className="contact-page__detail">
+            <FontAwesomeIcon icon={faEnvelope} aria-hidden="true" />
+            <div>
+              <span>{details.labels.email}</span>
+              <a href={`mailto:${business.contact.email}`}>
+                {business.contact.email}
+              </a>
+            </div>
+          </div>
+
+          {whatsappNumber && (
+            <div className="contact-page__detail contact-page__detail--whatsapp">
+              <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true" />
+              <div>
+                <span>{details.labels.whatsapp}</span>
+                <a
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {details.labels.whatsapp}
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
       <form
         className="contact-page__form"

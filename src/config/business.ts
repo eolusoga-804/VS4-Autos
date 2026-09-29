@@ -219,6 +219,17 @@ export const business = {
       service: "Service",
       details: "Details",
     },
+    directContact: {
+      heading: "Contact details",
+      intro: "Choose an option or use the enquiry form above.",
+      labels: {
+        coverage: "Mobile service area",
+        address: "Business address",
+        phone: "Phone",
+        email: "Email",
+        whatsapp: "WhatsApp",
+      },
+    },
   },
   aboutPage: {
     introTitle: "Practical vehicle care, brought to you",
