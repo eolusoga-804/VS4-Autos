@@ -229,6 +229,7 @@ export const business = {
       postcode: "Postcode",
       service: "Service",
       details: "Details",
+      mapLink: "Mechanic directions",
     },
     directContact: {
       heading: "Contact details",

@@ -184,6 +184,18 @@ function ContactPage() {
     }
 
     const messageCopy = copy.whatsappMessage;
+    const destination = mapLocation
+      ? `${mapLocation.latitude},${mapLocation.longitude}`
+      : [values.address.trim(), values.postcode.trim(), "United Kingdom"]
+          .filter(Boolean)
+          .join(", ");
+
+    const directionsUrl = new URL("https://www.google.com/maps/dir/");
+    directionsUrl.search = new URLSearchParams({
+      api: "1",
+      destination,
+      travelmode: "driving",
+    }).toString();
     const whatsappMessage = [
       `${messageCopy.title} ${business.name}`,
       `${messageCopy.name}: ${values.name.trim()}`,
@@ -193,6 +205,7 @@ function ContactPage() {
       `${messageCopy.registration}: ${values.registration.trim() || messageCopy.notProvided}`,
       `${messageCopy.address}: ${values.address.trim()}`,
       `${messageCopy.postcode}: ${values.postcode.trim() || messageCopy.notProvided}`,
+      `${messageCopy.mapLink}: ${directionsUrl.toString()}`,
       `${messageCopy.service}: ${values.service}`,
       `${messageCopy.details}: ${values.message.trim()}`,
     ].join("\n");
