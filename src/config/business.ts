@@ -230,4 +230,12 @@ export const business = {
     offerEyebrow: "New customer offer",
     offerPriceLabel: "Full service from",
   },
+  header: {
+    mainNavigationLabel: "Main navigation",
+    menuOpenLabel: "Menu",
+    menuCloseLabel: "Close",
+    mobileNavigationLabel: "Mobile navigation",
+    closeNavigationLabel: "Close navigation menu",
+    mobileContactLabel: "Contact VS4 Autos",
+  },
 } as const;

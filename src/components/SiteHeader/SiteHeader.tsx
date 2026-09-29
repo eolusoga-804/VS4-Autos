@@ -6,6 +6,7 @@ import "./SiteHeader.css";
 function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const headerCopy = business.header;
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -37,6 +38,7 @@ function SiteHeader() {
           className="site-header__orb site-header__orb--violet"
           aria-hidden="true"
         />
+
         <Link
           className="site-header__brand"
           to="/"
@@ -48,7 +50,7 @@ function SiteHeader() {
 
         <nav
           className="site-header__nav site-header__nav--desktop"
-          aria-label="Main navigation"
+          aria-label={headerCopy.mainNavigationLabel}
         >
           {business.navigation.map((item) => (
             <Link className="site-header__link" to={item.href} key={item.href}>
@@ -71,7 +73,9 @@ function SiteHeader() {
             <span />
             <span />
           </span>
-          <span>{isMenuOpen ? "Close" : "Menu"}</span>
+          <span>
+            {isMenuOpen ? headerCopy.menuCloseLabel : headerCopy.menuOpenLabel}
+          </span>
         </button>
       </header>
 
@@ -82,14 +86,14 @@ function SiteHeader() {
           <button
             className="site-header__backdrop"
             type="button"
-            aria-label="Close navigation menu"
+            aria-label={headerCopy.closeNavigationLabel}
             onClick={() => setIsMenuOpen(false)}
           />
 
           <aside
             className="site-header__sidebar"
             id="mobile-navigation"
-            aria-label="Mobile navigation"
+            aria-label={headerCopy.mobileNavigationLabel}
           >
             <p className="site-header__sidebar-label">{business.coverage}</p>
 
@@ -111,7 +115,7 @@ function SiteHeader() {
               to="/contact"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact VS4 Autos
+              {headerCopy.mobileContactLabel}
             </Link>
           </aside>
         </>
