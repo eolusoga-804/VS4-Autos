@@ -223,6 +223,26 @@ export const business = {
     faqEyebrow: "Common questions",
     faqHeading: "Before you book",
     areaEyebrow: "Local mobile support",
+    gallery: {
+      heading: "Vehicle care in action",
+      images: [
+        {
+          src: "/images/automotive-workshop-car.jpg",
+          alt: "Car and tools inside an automotive workshop",
+          caption: "A well-equipped workshop",
+        },
+        {
+          src: "/images/mechanic-engine-repair.jpg",
+          alt: "Mechanic working closely on a vehicle engine",
+          caption: "Hands-on engine care",
+        },
+        {
+          src: "/images/vehicle-inspection-workshop.jpg",
+          alt: "Mechanic inspecting a car in a bright workshop",
+          caption: "Vehicle inspection and servicing",
+        },
+      ],
+    },
   },
   homePage: {
     eyebrow: "MOBILE MECHANIC",

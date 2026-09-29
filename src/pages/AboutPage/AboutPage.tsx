@@ -12,6 +12,30 @@ function AboutPage() {
       </section>
 
       <section
+        className="about-page__gallery"
+        aria-label={business.aboutPage.gallery.heading}
+      >
+        {business.aboutPage.gallery.images.map((image, index) => (
+          <figure
+            className="about-page__gallery-item"
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+            key={image.src}
+          >
+            <img
+              className="about-page__gallery-image"
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+            />
+            <figcaption className="about-page__gallery-caption">
+              {image.caption}
+            </figcaption>
+          </figure>
+        ))}
+      </section>
+
+      <section
         className="about-page__services"
         aria-labelledby="about-services-title"
         data-aos="fade-up"
