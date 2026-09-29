@@ -30,11 +30,13 @@ function FaqAccordion() {
               </button>
             </h3>
 
-            {isOpen && (
-              <p className="about-page__faq-answer" id={answerId}>
-                {faq.answer}
-              </p>
-            )}
+            <div
+              className={`about-page__faq-panel${isOpen ? " about-page__faq-panel--open" : ""}`}
+              id={answerId}
+              aria-hidden={!isOpen}
+            >
+              <p className="about-page__faq-answer">{faq.answer}</p>
+            </div>
           </article>
         );
       })}

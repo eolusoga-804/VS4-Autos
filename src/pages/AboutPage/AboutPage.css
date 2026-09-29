@@ -400,3 +400,30 @@
     transition: none;
   }
 }
+
+.about-page__faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 760ms ease,
+    opacity 580ms ease,
+    visibility 430s linear 860ms;
+}
+
+.about-page__faq-panel--open {
+  max-height: 12rem;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 860ms ease,
+    opacity 480ms ease,
+    visibility 540s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__faq-panel {
+    transition: none;
+  }
+}
