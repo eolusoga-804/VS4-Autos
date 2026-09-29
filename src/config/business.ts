@@ -212,4 +212,16 @@ export const business = {
       details: "Details",
     },
   },
+  aboutPage: {
+    introTitle: "Practical vehicle care, brought to you",
+    introCopy:
+      "Our mobile mechanic service comes to your home or workplace, helping you care for your vehicle without arranging a garage drop-off.",
+    servicesEyebrow: "What we do",
+    servicesHeading: "Services for everyday motoring",
+    approachEyebrow: "The VS4 Autos approach",
+    approachTagline: "Mobile by design",
+    faqEyebrow: "Common questions",
+    faqHeading: "Before you book",
+    areaEyebrow: "Local mobile support",
+  },
 } as const;

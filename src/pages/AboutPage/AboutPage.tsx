@@ -1,5 +1,4 @@
 import { business } from "../../config/business";
-
 import FaqAccordion from "./FaqAccordion";
 import "./AboutPage.css";
 
@@ -8,14 +7,8 @@ function AboutPage() {
     <main className="about-page">
       <section className="about-page__intro" data-aos="fade-up">
         <p className="about-page__eyebrow">{business.coverage}</p>
-        <h1 className="about-page__title">
-          Practical vehicle care, brought to you
-        </h1>
-        <p className="about-page__copy">
-          {business.name} provides mobile mechanic support at your home or
-          workplace, helping you care for your vehicle without arranging a
-          garage drop-off.
-        </p>
+        <h1 className="about-page__title">{business.aboutPage.introTitle}</h1>
+        <p className="about-page__copy">{business.aboutPage.introCopy}</p>
       </section>
 
       <section
@@ -24,9 +17,11 @@ function AboutPage() {
         data-aos="fade-up"
       >
         <div className="about-page__section-heading">
-          <p className="about-page__eyebrow">What we do</p>
+          <p className="about-page__eyebrow">
+            {business.aboutPage.servicesEyebrow}
+          </p>
           <h2 className="about-page__title" id="about-services-title">
-            Services for everyday motoring
+            {business.aboutPage.servicesHeading}
           </h2>
         </div>
 
@@ -34,8 +29,9 @@ function AboutPage() {
           {business.services.map((service, index) => (
             <article
               className="about-page__service-card"
-              key={service}
+              data-aos="fade-up"
               data-aos-delay={index * 50}
+              key={service}
             >
               <span className="about-page__service-number">
                 {String(index + 1).padStart(2, "0")}
@@ -55,18 +51,25 @@ function AboutPage() {
         data-aos="fade-up"
       >
         <div>
-          <p className="about-page__eyebrow">The VS4 Autos approach</p>
+          <p className="about-page__eyebrow">
+            {business.aboutPage.approachEyebrow}
+          </p>
           <h2 className="about-page__title" id="about-approach-title">
             {business.approach.heading}
           </h2>
           <p className="about-page__copy">{business.approach.intro}</p>
         </div>
 
-        <ul className="about-page__benefits">
-          {business.approach.points.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
+        <div>
+          <p className="about-page__eyebrow">
+            {business.aboutPage.approachTagline}
+          </p>
+          <ul className="about-page__benefits">
+            {business.approach.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section
@@ -75,9 +78,9 @@ function AboutPage() {
         data-aos="fade-up"
       >
         <div className="about-page__section-heading">
-          <p className="about-page__eyebrow">Common questions</p>
+          <p className="about-page__eyebrow">{business.aboutPage.faqEyebrow}</p>
           <h2 className="about-page__title" id="about-faq-title">
-            Before you book
+            {business.aboutPage.faqHeading}
           </h2>
         </div>
         <FaqAccordion />
@@ -89,7 +92,9 @@ function AboutPage() {
         data-aos="fade-up"
       >
         <div>
-          <p className="about-page__eyebrow">Local mobile support</p>
+          <p className="about-page__eyebrow">
+            {business.aboutPage.areaEyebrow}
+          </p>
           <h2 className="about-page__title" id="about-area-title">
             {business.serviceArea.heading}
           </h2>
