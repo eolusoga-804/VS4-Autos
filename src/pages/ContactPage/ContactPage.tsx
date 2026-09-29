@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { FormEvent } from "react";
-import { business } from "../../config/business";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -8,7 +7,10 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { business } from "../../config/business";
 import ContactMap from "../../components/ContactMap/ContactMap";
+import { geocodeBuildingAddress } from "../../services/geocoding";
+import type { BuildingLocation } from "../../services/geocoding";
 import "leaflet/dist/leaflet.css";
 import "./ContactPage.css";
 
@@ -25,6 +27,7 @@ type FormValues = {
 };
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
+type MapLookupStatus = "idle" | "loading" | "found" | "not-found" | "error";
 
 const initialValues: FormValues = {
   name: "",
@@ -38,10 +41,13 @@ const initialValues: FormValues = {
   message: "",
 };
 
+const ukPostcodePattern = /^(GIR 0AA|[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2})$/i;
+
 function ContactPage() {
   const copy = business.contactPage;
   const errorMessages = business.contactFormErrors;
   const details = copy.directContact;
+  const mapCopy = copy.mapLookup;
   const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
   const phoneLink = business.contact.phone.replace(/[^\d+]/g, "");
 
@@ -49,12 +55,77 @@ function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [formError, setFormError] = useState("");
   const [fallbackMailto, setFallbackMailto] = useState("");
+  const [mapLocation, setMapLocation] = useState<BuildingLocation | null>(null);
+  const [mapLookupStatus, setMapLookupStatus] =
+    useState<MapLookupStatus>("idle");
+
+  const mapSectionRef = useRef<HTMLElement | null>(null);
+  const lookupRequestRef = useRef(0);
 
   function updateField(field: keyof FormValues, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setFormError("");
     setFallbackMailto("");
+
+    if (field === "address" || field === "postcode") {
+      lookupRequestRef.current += 1;
+      setMapLocation(null);
+      setMapLookupStatus("idle");
+    }
+  }
+
+  async function handleLocateAddress() {
+    const address = values.address.trim();
+    const postcode = values.postcode.trim();
+
+    if (!address || !postcode || !ukPostcodePattern.test(postcode)) {
+      const inputErrors: FormErrors = {};
+
+      if (!address) {
+        inputErrors.address = errorMessages.addressRequired;
+      }
+
+      if (!postcode) {
+        inputErrors.postcode = errorMessages.postcodeRequired;
+      } else if (!ukPostcodePattern.test(postcode)) {
+        inputErrors.postcode = errorMessages.postcodeInvalid;
+      }
+
+      setErrors((current) => ({ ...current, ...inputErrors }));
+      return;
+    }
+
+    const requestId = ++lookupRequestRef.current;
+    setMapLocation(null);
+    setMapLookupStatus("loading");
+
+    try {
+      const location = await geocodeBuildingAddress(address, postcode);
+
+      if (requestId !== lookupRequestRef.current) {
+        return;
+      }
+
+      if (!location) {
+        setMapLookupStatus("not-found");
+        return;
+      }
+
+      setMapLocation(location);
+      setMapLookupStatus("found");
+
+      window.requestAnimationFrame(() => {
+        mapSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      });
+    } catch {
+      if (requestId === lookupRequestRef.current) {
+        setMapLookupStatus("error");
+      }
+    }
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -92,11 +163,7 @@ function ContactPage() {
 
     if (!values.postcode.trim()) {
       nextErrors.postcode = errorMessages.postcodeRequired;
-    } else if (
-      !/^(GIR 0AA|[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2})$/i.test(
-        values.postcode.trim(),
-      )
-    ) {
+    } else if (!ukPostcodePattern.test(values.postcode.trim())) {
       nextErrors.postcode = errorMessages.postcodeInvalid;
     }
 
@@ -128,8 +195,6 @@ function ContactPage() {
       `${messageCopy.service}: ${values.service}`,
       `${messageCopy.details}: ${values.message.trim()}`,
     ].join("\n");
-
-    const whatsappNumber = business.contact.whatsappNumber.replace(/\D/g, "");
 
     if (!whatsappNumber) {
       const subject = encodeURIComponent(
@@ -227,11 +292,12 @@ function ContactPage() {
       </section>
 
       <section
+        ref={mapSectionRef}
         className="contact-page__map"
-        aria-label={business.coverage}
+        aria-label={mapCopy.regionLabel}
         data-aos="fade-up"
       >
-        <ContactMap />
+        <ContactMap location={mapLocation} mapLabel={mapCopy.regionLabel} />
       </section>
 
       <form
@@ -419,6 +485,39 @@ function ContactPage() {
               <small id="contact-message-error">{errors.message}</small>
             )}
           </label>
+        </div>
+
+        <div className="contact-page__map-controls">
+          <button
+            className="contact-page__map-locate"
+            type="button"
+            onClick={handleLocateAddress}
+            disabled={mapLookupStatus === "loading"}
+          >
+            {mapLookupStatus === "loading"
+              ? mapCopy.locatingButton
+              : mapCopy.locateButton}
+          </button>
+
+          <p className="contact-page__map-note">{mapCopy.privacyNote}</p>
+
+          {mapLookupStatus === "found" && mapLocation && (
+            <p className="contact-page__map-status" role="status">
+              {mapCopy.exactMatchLabel}: {mapLocation.formattedAddress}
+            </p>
+          )}
+
+          {mapLookupStatus === "not-found" && (
+            <p className="contact-page__map-status" role="status">
+              {mapCopy.noBuildingMatch}
+            </p>
+          )}
+
+          {mapLookupStatus === "error" && (
+            <p className="contact-page__map-status" role="alert">
+              {mapCopy.lookupError}
+            </p>
+          )}
         </div>
 
         {formError && (

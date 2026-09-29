@@ -203,6 +203,18 @@ export const business = {
       address: "Street and town or city",
       service: "Choose a service",
     },
+    mapLookup: {
+      regionLabel: "Customer address map",
+      locateButton: "Show this address on the map",
+      locatingButton: "Checking building location…",
+      privacyNote:
+        "Choosing this sends your service address and postcode to Geoapify to locate the building.",
+      noBuildingMatch:
+        "We couldn't confirm a house-level match. Check the address and postcode, then try again.",
+      lookupError:
+        "The address lookup isn't available right now. Please try again later.",
+      exactMatchLabel: "Building-level address match",
+    },
     submit: "Prepare WhatsApp enquiry",
     requiredNote: "* Required fields",
     emailFallback: "Open prefilled email",

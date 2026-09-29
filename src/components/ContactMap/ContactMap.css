@@ -11,6 +11,24 @@
   height: 280px;
 }
 
+.contact-map__pin {
+  border: 0;
+  background: transparent;
+}
+
+.contact-map__pin::before {
+  position: absolute;
+  inset: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  background: var(--color-sky, #8bd8f5);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 35%);
+  content: "";
+  transform: rotate(-45deg);
+}
+
 @media (min-width: 768px) {
   .contact-map__canvas {
     height: 340px;

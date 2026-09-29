@@ -99,6 +99,61 @@
   font-weight: 600;
 }
 
+.contact-page__map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.65rem;
+  margin-top: 0.65rem;
+}
+
+.contact-page__map-locate {
+  max-width: 300px;
+  border: 1px solid #0284c7;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.7rem;
+  background: #e0f2fe;
+  color: #075985;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 800;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.contact-page__map-locate:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #bae6fd;
+}
+
+.contact-page__map-locate:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+.contact-page__map-locate:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.contact-page__map-note,
+.contact-page__map-status {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.contact-page__map-note {
+  color: var(--color-muted);
+}
+
+.contact-page__map-status {
+  color: var(--color-black);
+  font-weight: 700;
+}
+
 .contact-page__error {
   margin: 0.65rem 0 0;
   border-left: 3px solid #dc2626;
@@ -141,24 +196,6 @@
   margin: 0.4rem 0 0;
   color: var(--color-muted);
   font-size: 0.7rem;
-}
-
-@media (max-width: 520px) {
-  .contact-page__intro {
-    text-align: center;
-  }
-
-  .contact-page__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-page__field--wide {
-    grid-column: auto;
-  }
-
-  .contact-page__submit {
-    width: 100%;
-  }
 }
 
 .contact-page__email-fallback {
@@ -258,12 +295,30 @@
   color: #4ade80;
 }
 
+.contact-page__map {
+  margin-block: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .contact-page__intro {
+    text-align: center;
+  }
+
+  .contact-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page__field--wide {
+    grid-column: auto;
+  }
+
+  .contact-page__submit {
+    width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
   .contact-page__details-heading {
     text-align: center;
   }
-}
-
-.contact-page__map {
-  margin-block: 0.75rem;
 }
